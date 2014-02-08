@@ -20,3 +20,5 @@
 
 ;; Login
 (def githubLogin service/github-login!)
+(def isLoggedIn service/is-logged-in?)
+(def getLoggedInUser service/get-logged-in-user)

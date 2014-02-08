@@ -3,6 +3,8 @@
 
 (enable-console-print!)
 
+(def logged-in-user (atom nil))
+
 (def firebase (js/Firebase. "https://luminous-fire-8648.firebaseio.com"))
 (def users-ref (.child firebase "users"))
 
@@ -12,9 +14,15 @@
                                                  (when err
                                                    (.reject promise err))
                                                  (when user
+                                                   (reset! logged-in-user user)
                                                    (.resolve promise user))))]
     (.login auth "github")
     promise))
+
+(defn is-logged-in? []
+  (not (nil? @logged-in-user)))
+
+(defn get-logged-in-user [] @logged-in-user)
 
 (def githubLogin github-login!)
 
