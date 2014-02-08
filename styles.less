@@ -22,20 +22,49 @@
 }
 
 .item {
+  @caption-height: 60px;
+  
+  position: relative;
   width: 100%;
   height: 100%;
   background: #D26;
-  border: 2px solid #333;
   border-color: hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+    
+  &:hover {
+    .caption {
+      bottom: @caption-height*-1;
+    }
+  }
+  
+  .caption {
+    position: absolute;
+    width: 100%;
+    height: @caption-height;
+    bottom: 0;
+    background: lightgray;
+    border-radius: 0 0 5px 5px;
+    
+    -webkit-transition: bottom 200ms ease-in-out;
+    transition: bottom 200ms ease-in-out;
+  }
 }
 
 .column {
     width: @grid-width/@num-columns;
     height: @grid-width/@num-columns;
+    .item {
+        background-size: auto 100%;
+    }
+
 }
 
 .column2 {
-    width: @grid-width/@num-columns*2;
+    width: @grid-width*2/@num-columns;
     height: @grid-width*2/@num-columns;
+    .item {
+        background-size: auto 100%;
+    }
 }
