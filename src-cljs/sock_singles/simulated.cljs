@@ -1,14 +1,8 @@
 (ns sock-singles.simulated
-  (:require [sock-singles.util :as util :refer [gen-promise]]))
+  (:require [sock-singles.util :as util :refer [gen-promise]]
+            [sock-singles.parameters :as params]))
 
 (enable-console-print!)
-
-(def parameters
-  [{:name :length, :type :slider, :values (range 3 40)}
-   {:name :size, :type :slider, :values ["S","M","L"]}
-   {:name :color, :type :color}])
-
-(.toString (rand-int 0xff) 16)
 
 (defn random-color []
   (str
@@ -19,7 +13,7 @@
 
 (defn random-parameter [parameter-name]
   (->
-   (filter #(= parameter-name (:name %)) parameters)
+   (filter #(= parameter-name (:name %)) params/parameters)
    first
    :values
    rand-nth))
