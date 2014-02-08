@@ -1,8 +1,7 @@
 (ns sock-singles.simulated
-  (:require [sock-singles.core :as core :refer [gen-promise]]))
+  (:require [sock-singles.util :as util :refer [gen-promise]]))
 
 (enable-console-print!)
-
 
 (def parameters
   [{:name :length, :type :slider, :values (range 3 40)}
