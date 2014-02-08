@@ -14,15 +14,15 @@ function(TwoBigButtons){
 		},
 		index: function(){
 			React.renderComponent(
-				<TwoBigButtons buttonOneName="Buy" buttonOneHandler={this.search} buttonTwoName="Sell" buttonTwoHandler={this.login}/>,
+				<TwoBigButtons buttonOneName="Buy" buttonOneHandler={this.navigate.bind(this, "search", { trigger: true })} buttonTwoName="Sell" buttonTwoHandler={this.navigate.bind(this, "login", { trigger: true })} />,
 				mainElement
 			);
 		},
 		search: function(){
-
+			console.log('search');
 		},
 		login: function(){
-
+			console.log('login');
 		}
 	});
 	return Router;
