@@ -4,10 +4,10 @@ define(function(){
 	var TwoBigButtons = React.createClass({
 		render: function(){
 			return (
-				<div className="col-md-8 col-md-offset-2">
-					<button type="button" className="col-md-6 btn btn-primary" onClick={this.props.buttonOneHandler} >{this.props.buttonOneName}</button>
-					<button type="button" className="col-md-6 btn btn-success" onClick={this.props.buttonTwoHandler}>{this.props.buttonTwoName}</button>
-				</div>
+			<div id="btn-container">
+				<button id={this.props.buttonOneName} type="button" className={"btn " + this.props.buttonOneClass} onClick={this.props.buttonOneHandler} >{this.props.buttonOneName}</button>
+				<button id={this.props.buttonTwoName} type="button" className={"btn " + this.props.buttonTwoClass} onClick={this.props.buttonTwoHandler}>{this.props.buttonTwoName}</button>
+			</div>
 			);
 		}
 	});
