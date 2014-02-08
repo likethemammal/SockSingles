@@ -4,15 +4,16 @@ define(
 	'jsx!views/twoBigButtons'
 ],
 function(TwoBigButtons){
-	var mainElement = $("[data-js-app]")[0],
+	var SS = sock_singles.core,
+		mainElement = $("[data-js-app]")[0],
 		btnContainer = $("[data-js-btn-container]")[0];
 
 	var Router = Backbone.Router.extend({
 		routes: {
 			'': 'index',
-			'search': 'search',
-			'login': 'login'
-		},
+			'search': 'search'
+			},
+			
 		index: function(){
 			React.renderComponent(
 				<TwoBigButtons
@@ -22,40 +23,29 @@ function(TwoBigButtons){
 					
 					buttonTwoName="Sell"
 					buttonTwoClass="btn-green"
-					buttonTwoHandler={this.loginSignup.bind(this)}
+					buttonTwoHandler={this.login.bind(this)}
 				/>,
 				mainElement
 			);
 			$(mainElement).addClass('landing');
 
 		},
+		
 		search: function(){
+			console.log('search');
 		},
 		
-		loginSignup: function() {
-			React.renderComponent(
-				<TwoBigButtons
-					buttonOneName="Login"
-					buttonOneHandler={this.navigate.bind(this, "login", { trigger: true })}
-					buttonOneClass="btn-green-blue"
-					buttonTwoName="Signup"
-					buttonTwoClass="btn-dark-blue"
-					buttonTwoHandler={this.navigate.bind(this, "signup", { trigger: true })}
-				/>,
-				mainElement
-			);
-			$(mainElement).addClass('login-signup');
-
-		},
-		
-		login: function(){
+		login: function() {
 			
-			this.loginSignup();
+			if (SS.isLoggedIn()) {
+				this.navigate("search", { trigger: true,  tabOpen: true});
+			} else {
+				SS.githubLogin().done(function() {
+					this.navigate("search", { trigger: true});
+				}.bind(this));
+			}
 
-			$(btnContainer).animate({bottom: '100px'}, 1000, function() {
-				console.log('what the shit');
-			});
-		}
+		},
 	});
 	return Router;
 });
