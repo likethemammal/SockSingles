@@ -10,9 +10,8 @@ requirejs.config({
 	}
 });
 
-require(["jsx!router"], function(Router){
+require(["router"], function(){
 	if (Backbone.history){
-		new Router;
 		Backbone.history.start();
 	}
 });
