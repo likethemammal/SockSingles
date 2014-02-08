@@ -13943,6 +13943,20 @@ sock_singles.util.colorFilter = function(a, b) {
 sock_singles.util.lengthFilter = function(a, b) {
   return sock_singles.util.length_threshold > sock_singles.util.length_distance.call(null, a, b);
 };
+sock_singles.service = {};
+cljs.core.enable_console_print_BANG_.call(null);
+sock_singles.service.firebase = new Firebase("https://luminous-fire-8648.firebaseio.com");
+sock_singles.service.github_login_BANG_ = function() {
+  var a = sock_singles.util.gen_promise.call(null);
+  (new FirebaseSimpleLogin(sock_singles.service.firebase, function(a) {
+    return function(c, d) {
+      cljs.core.truth_(c) && a.reject(c);
+      return cljs.core.truth_(d) ? a.resolve(d) : null;
+    };
+  }(a))).login("github");
+  return a;
+};
+sock_singles.service.githubLogin = sock_singles.service.github_login_BANG_;
 sock_singles.simulated = {};
 cljs.core.enable_console_print_BANG_.call(null);
 sock_singles.simulated.parameters = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "name", "name", 1017277949), new cljs.core.Keyword(null, "length", "length", 4202507864), new cljs.core.Keyword(null, "type", "type", 1017479852), new cljs.core.Keyword(null, "slider", "slider", 4409224275), new cljs.core.Keyword(null, "values", "values", 4485058708), cljs.core.range.call(null, 3, 40)], null), 
@@ -14016,5 +14030,6 @@ cljs.core.enable_console_print_BANG_.call(null);
 sock_singles.core.getSocks = sock_singles.simulated.getSocks;
 sock_singles.core.colorFilter = sock_singles.util.colorFilter;
 sock_singles.core.lengthFilter = sock_singles.util.lengthFilter;
+sock_singles.core.githubLogin = sock_singles.service.github_login_BANG_;
 
 //# sourceMappingURL=sock_singles.js.map
