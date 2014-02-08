@@ -1,7 +1,8 @@
 /** @jsx React.DOM */
-define(function(){
+define(["transitionMixin"], function(transitionMixin){
 	// Base
 	var TwoBigButtons = React.createClass({
+		mixins: [transitionMixin],
 		render: function(){
 			return (
 			<div id="btn-container">
