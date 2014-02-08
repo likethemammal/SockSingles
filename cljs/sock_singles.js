@@ -13957,7 +13957,6 @@ sock_singles.service.github_login_BANG_ = function() {
   return a;
 };
 sock_singles.service.githubLogin = sock_singles.service.github_login_BANG_;
-sock_singles.service.github_login_BANG_.call(null);
 sock_singles.parameters = {};
 sock_singles.parameters.parameters = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "name", "name", 1017277949), new cljs.core.Keyword(null, "length", "length", 4202507864), new cljs.core.Keyword(null, "type", "type", 1017479852), new cljs.core.Keyword(null, "slider", "slider", 4409224275), new cljs.core.Keyword(null, "values", "values", 4485058708), cljs.core.range.call(null, 3, 40)], null), 
 new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "name", "name", 1017277949), new cljs.core.Keyword(null, "size", "size", 1017434995), new cljs.core.Keyword(null, "type", "type", 1017479852), new cljs.core.Keyword(null, "slider", "slider", 4409224275), new cljs.core.Keyword(null, "values", "values", 4485058708), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["S", "M", "L"], null)], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, 
