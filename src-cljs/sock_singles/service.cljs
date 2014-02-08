@@ -16,3 +16,11 @@
     promise))
 
 (def githubLogin github-login!)
+
+(github-login!)
+
+#_(def socks (.child firebase "socks"))
+
+#_(.transaction socks (fn [socks]
+                         (println socks)
+                         (.concat socks #js ["boook"])))
