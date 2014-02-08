@@ -4,6 +4,7 @@
 (enable-console-print!)
 
 (def firebase (js/Firebase. "https://luminous-fire-8648.firebaseio.com"))
+(def users-ref (.child firebase "users"))
 
 (defn github-login! []
   (let [promise (gen-promise)
@@ -17,8 +18,45 @@
 
 (def githubLogin github-login!)
 
-#_(def socks (.child firebase "socks"))
+(defn get-firebase-ref [] firebase)
+(defn get-users-ref [] users-ref)
 
-#_(.transaction socks (fn [socks]
-                         (println socks)
-                         (.concat socks #js ["boook"])))
+(defn get-socks []
+  (let [promise (gen-promise)]
+    (.once users-ref "value"
+           (fn [snapshot]
+             (->>
+              (.val snapshot)
+              (js->clj)
+              (mapcat
+               (fn [[user socks]]
+                 (map #(assoc % :username user) (vals socks))))
+              (clj->js)
+              (.resolve promise))))
+    promise))
+
+(comment
+
+  (.done (get-socks) #(.log js/console %))
+
+  (def marco-ref (.child users-ref "MarcoPolo"))
+  (def other-ref (.child users-ref "likethemammal"))
+
+  (.push marco-ref #js {:title "socky lol" :size "M"})
+  (.push marco-ref #js {:title "Foo" :size "S"})
+
+
+  (doseq [sock (map (comp clj->js #(dissoc % :username)) (sock-singles.simulated/get-socks 5))]
+    (.push (.child users-ref "marlonlandaverde") sock))
+
+  (.push other-ref #js {:title "My Best Sock" :size "S"})
+
+  (.val marco-ref)
+  (.on users-ref "child_added" (fn [s] (def k (.val s))))
+  (.once users-ref "value" (fn [s] (def k (.val s))))
+  (.off marco-ref)
+  (.off users-ref)
+
+
+
+ )

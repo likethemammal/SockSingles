@@ -13946,6 +13946,7 @@ sock_singles.util.lengthFilter = function(a, b) {
 sock_singles.service = {};
 cljs.core.enable_console_print_BANG_.call(null);
 sock_singles.service.firebase = new Firebase("https://luminous-fire-8648.firebaseio.com");
+sock_singles.service.users_ref = sock_singles.service.firebase.child("users");
 sock_singles.service.github_login_BANG_ = function() {
   var a = sock_singles.util.gen_promise.call(null);
   (new FirebaseSimpleLogin(sock_singles.service.firebase, function(a) {
@@ -13957,6 +13958,25 @@ sock_singles.service.github_login_BANG_ = function() {
   return a;
 };
 sock_singles.service.githubLogin = sock_singles.service.github_login_BANG_;
+sock_singles.service.get_firebase_ref = function() {
+  return sock_singles.service.firebase;
+};
+sock_singles.service.get_users_ref = function() {
+  return sock_singles.service.users_ref;
+};
+sock_singles.service.get_socks = function() {
+  var a = sock_singles.util.gen_promise.call(null);
+  sock_singles.service.users_ref.once("value", function(b) {
+    return a.resolve(cljs.core.clj__GT_js.call(null, cljs.core.mapcat.call(null, function(a) {
+      var b = cljs.core.nth.call(null, a, 0, null);
+      a = cljs.core.nth.call(null, a, 1, null);
+      return cljs.core.map.call(null, function(a) {
+        return cljs.core.assoc.call(null, a, new cljs.core.Keyword(null, "username", "username", 748190792), b);
+      }, cljs.core.vals.call(null, a));
+    }, cljs.core.js__GT_clj.call(null, b.val()))));
+  });
+  return a;
+};
 sock_singles.parameters = {};
 sock_singles.parameters.parameters = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "name", "name", 1017277949), new cljs.core.Keyword(null, "length", "length", 4202507864), new cljs.core.Keyword(null, "type", "type", 1017479852), new cljs.core.Keyword(null, "slider", "slider", 4409224275), new cljs.core.Keyword(null, "values", "values", 4485058708), cljs.core.range.call(null, 3, 40)], null), 
 new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "name", "name", 1017277949), new cljs.core.Keyword(null, "size", "size", 1017434995), new cljs.core.Keyword(null, "type", "type", 1017479852), new cljs.core.Keyword(null, "slider", "slider", 4409224275), new cljs.core.Keyword(null, "values", "values", 4485058708), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["S", "M", "L"], null)], null), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, 
@@ -14005,7 +14025,7 @@ sock_singles.simulated.get_socks = function(a) {
         return null;
       }
     }, null, null);
-  }.call(null, cljs.core.range.call(null, 5));
+  }.call(null, cljs.core.range.call(null, a));
 };
 sock_singles.simulated.getSocks = function() {
   var a = null, b = function() {
@@ -14032,7 +14052,9 @@ cljs.core.enable_console_print_BANG_.call(null);
 sock_singles.core.getParameters = function() {
   return cljs.core.clj__GT_js.call(null, sock_singles.parameters.parameters);
 };
-sock_singles.core.getSocks = sock_singles.simulated.getSocks;
+sock_singles.core.getSocks = sock_singles.service.get_socks;
+sock_singles.core.getUsersRef = sock_singles.service.get_users_ref;
+sock_singles.core.getFirebaseRef = sock_singles.service.get_firebase_ref;
 sock_singles.core.colorFilter = sock_singles.util.colorFilter;
 sock_singles.core.lengthFilter = sock_singles.util.lengthFilter;
 sock_singles.core.githubLogin = sock_singles.service.github_login_BANG_;

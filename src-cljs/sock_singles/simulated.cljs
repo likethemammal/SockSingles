@@ -36,7 +36,7 @@
   ["Fuzzy Wuzzy" "Sock it to me it" "Linty Linda" "Sleepless in Sockeatlle" "Socker Star"])
 
 (defn get-socks [count]
-  (for [_ (range 5)]
+  (for [_ (range count)]
     {:length (random-parameter :length)
      :color (random-color)
      :size (random-parameter :size)

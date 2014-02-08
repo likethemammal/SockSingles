@@ -9,7 +9,10 @@
 
 ;; Socks API
 (defn getParameters [] (clj->js params/parameters))
-(def getSocks sim/getSocks)
+;;(def getSocks sim/getSocks)
+(def getSocks service/get-socks)
+(def getUsersRef service/get-users-ref)
+(def getFirebaseRef service/get-firebase-ref)
 
 ;; Filters
 (def colorFilter util/colorFilter)
