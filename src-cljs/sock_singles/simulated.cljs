@@ -29,12 +29,20 @@
    "http://i.imgur.com/RCedKJi.jpg"
    "http://i.imgur.com/K0fTAc9.jpg"])
 
+(def stock-usernames
+  ["ElChupacabra" "MarcoPolo" "likethemammal" "MrManager"])
+
+(def stock-titles
+  ["Fuzzy Wuzzy" "Sock it to me it" "Linty Linda" "Sleepless in Sockeatlle" "Socker Star"])
+
 (defn get-socks [count]
   (for [_ (range 5)]
     {:length (random-parameter :length)
      :color (random-color)
      :size (random-parameter :size)
-     :image-path (rand-nth stock-pictures)}))
+     :image-path (rand-nth stock-pictures)
+     :username (rand-nth stock-usernames)
+     :title (rand-nth stock-titles)}))
 
 (defn getSocks
   ([count]

@@ -13975,6 +13975,8 @@ sock_singles.simulated.random_parameter = function(a) {
 sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, "length", "length", 4202507864));
 sock_singles.simulated.random_color.call(null);
 sock_singles.simulated.stock_pictures = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["http://i.imgur.com/K5bDhOb.jpg", "http://i.imgur.com/CW509KC.jpg", "http://i.imgur.com/OFBQvO7.jpg", "http://i.imgur.com/RCedKJi.jpg", "http://i.imgur.com/K0fTAc9.jpg"], null);
+sock_singles.simulated.stock_usernames = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, ["ElChupacabra", "MarcoPolo", "likethemammal", "MrManager"], null);
+sock_singles.simulated.stock_titles = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Fuzzy Wuzzy", "Sock it to me it", "Linty Linda", "Sleepless in Sockeatlle", "Socker Star"], null);
 sock_singles.simulated.get_socks = function(a) {
   return function c(a) {
     return new cljs.core.LazySeq(null, function() {
@@ -13986,8 +13988,8 @@ sock_singles.simulated.get_socks = function(a) {
             a: {
               for (var k = 0;;) {
                 if (k < g) {
-                  cljs.core._nth.call(null, f, k), cljs.core.chunk_append.call(null, h, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "length", "length", 4202507864), sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, "length", "length", 4202507864)), new cljs.core.Keyword(null, "color", "color", 1108746965), sock_singles.simulated.random_color.call(null), new cljs.core.Keyword(null, "size", "size", 1017434995), sock_singles.simulated.random_parameter.call(null, 
-                  new cljs.core.Keyword(null, "size", "size", 1017434995)), new cljs.core.Keyword(null, "image-path", "image-path", 3819794633), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_pictures)], null)), k += 1;
+                  cljs.core._nth.call(null, f, k), cljs.core.chunk_append.call(null, h, new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null, "length", "length", 4202507864), sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, "length", "length", 4202507864)), new cljs.core.Keyword(null, "color", "color", 1108746965), sock_singles.simulated.random_color.call(null), new cljs.core.Keyword(null, "size", "size", 1017434995), sock_singles.simulated.random_parameter.call(null, 
+                  new cljs.core.Keyword(null, "size", "size", 1017434995)), new cljs.core.Keyword(null, "image-path", "image-path", 3819794633), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_pictures), new cljs.core.Keyword(null, "username", "username", 748190792), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_usernames), new cljs.core.Keyword(null, "title", "title", 1124275658), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_titles)], null)), k += 1;
                 } else {
                   f = !0;
                   break a;
@@ -13998,8 +14000,8 @@ sock_singles.simulated.get_socks = function(a) {
             return f ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), c.call(null, cljs.core.chunk_rest.call(null, e))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, h), null);
           }
           cljs.core.first.call(null, e);
-          return cljs.core.cons.call(null, new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null, "length", "length", 4202507864), sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, "length", "length", 4202507864)), new cljs.core.Keyword(null, "color", "color", 1108746965), sock_singles.simulated.random_color.call(null), new cljs.core.Keyword(null, "size", "size", 1017434995), sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, 
-          "size", "size", 1017434995)), new cljs.core.Keyword(null, "image-path", "image-path", 3819794633), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_pictures)], null), c.call(null, cljs.core.rest.call(null, e)));
+          return cljs.core.cons.call(null, new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null, "length", "length", 4202507864), sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, "length", "length", 4202507864)), new cljs.core.Keyword(null, "color", "color", 1108746965), sock_singles.simulated.random_color.call(null), new cljs.core.Keyword(null, "size", "size", 1017434995), sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, 
+          "size", "size", 1017434995)), new cljs.core.Keyword(null, "image-path", "image-path", 3819794633), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_pictures), new cljs.core.Keyword(null, "username", "username", 748190792), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_usernames), new cljs.core.Keyword(null, "title", "title", 1124275658), cljs.core.rand_nth.call(null, sock_singles.simulated.stock_titles)], null), c.call(null, cljs.core.rest.call(null, e)));
         }
         return null;
       }
