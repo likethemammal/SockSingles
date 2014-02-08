@@ -13995,7 +13995,7 @@ sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, "
 sock_singles.simulated.random_color.call(null);
 sock_singles.simulated.stock_pictures = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["http://i.imgur.com/K5bDhOb.jpg", "http://i.imgur.com/CW509KC.jpg", "http://i.imgur.com/OFBQvO7.jpg", "http://i.imgur.com/RCedKJi.jpg", "http://i.imgur.com/K0fTAc9.jpg"], null);
 sock_singles.simulated.stock_usernames = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, ["ElChupacabra", "MarcoPolo", "likethemammal", "MrManager"], null);
-sock_singles.simulated.stock_titles = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Fuzzy Wuzzy", "Sock it to me it", "Linty Linda", "Sleepless in Sockeatlle", "Socker Star"], null);
+sock_singles.simulated.stock_titles = new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, "Fuzzy Wuzzy;Sock it to me it;Linty Linda;Sleepless in Sockeatlle;Socker Star;Sockretes".split(";"), null);
 sock_singles.simulated.get_socks = function(a) {
   return function c(a) {
     return new cljs.core.LazySeq(null, function() {

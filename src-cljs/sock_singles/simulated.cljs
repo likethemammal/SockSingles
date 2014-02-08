@@ -33,7 +33,8 @@
   ["ElChupacabra" "MarcoPolo" "likethemammal" "MrManager"])
 
 (def stock-titles
-  ["Fuzzy Wuzzy" "Sock it to me it" "Linty Linda" "Sleepless in Sockeatlle" "Socker Star"])
+  ["Fuzzy Wuzzy" "Sock it to me it" "Linty Linda" "Sleepless in Sockeatlle" "Socker Star"
+   "Sockretes"])
 
 (defn get-socks [count]
   (for [_ (range count)]
