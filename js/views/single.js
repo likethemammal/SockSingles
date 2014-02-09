@@ -14,7 +14,7 @@ define(function(){
 				item,
 				itemChildren = [],
 				itemWrapper;
-				
+								
 			if (this.props.header) {
 				header = React.DOM.div({className: 'header'}, this.props.header);
 				itemChildren.push(header);
@@ -34,7 +34,8 @@ define(function(){
 			}
 			
 			item = React.DOM.div({ className: 'item', style: {
-				background: 'url(' + this.props['image-path'] + ') top center'}
+				'background-image': 'url(' + this.props['image-path'] + ')',
+				'background-position': 'top center'}
 			}, itemChildren);
 	
 			itemWrapper = React.DOM.div({ className: 'item-wrapper ' + this.props.wrapperClass }, item);
@@ -51,7 +52,8 @@ define(function(){
 					
 			item = Item({
 				title: this.props.displayName,
-				'image-path': this.props['image-path'],
+				'image-path': this.props.avatarUrl,
+				wrapperClass: this.props.wrapperClass,
 				header: 'Seller',
 			}, header);
 		    return item;
@@ -64,12 +66,10 @@ define(function(){
 				traits = [],
 				header,
 				desc,
-				notTraits = ['id', 'displayName', 'image-path', 'username', '__owner__'],
+				notTraits = ['id', 'displayName', 'image-path', 'username', '__owner__', 'avatarUrl'],
 				propVal, 
 				propKey;
-				
-				console.log(this.props);
-				
+								
 			for (var i = 0; i < Object.keys(this.props).length; i++) {
 				
 				propKey = Object.keys(this.props)[i];
@@ -97,6 +97,7 @@ define(function(){
 		getInitialState: function() {
 			return {
 				displayName: '',
+				avatarUrl: '',
 				'image-path': '/../imgs/sock1.jpg'
 			};
 		},
@@ -105,18 +106,25 @@ define(function(){
 		componentWillMount: function() {
 			console.log("woah!");
 			SS.getSocks().done(function(socks){
-// 				props = socks[window.location.hash.split('/')[1]]; //When backend is hookedup.
-				props = socks[3];
 				
+				var props;
+				
+				for (var i = 0; i < socks.length; i++) {
+					if (socks[i].id === window.location.hash.split('/')[1]) {
+						props = socks[i];
+					}
+				}
+												
 				SS.getUsersRef().child(props['username']).on('value', function(snapshot) {
-					var displayName = 'Fuck HEAd';
-					var avatarUrl = 'imgs/sock1.jpg';
-	// 				displayName = snapshot.val().displayName; //When backend is hookedup.
-	// 				avatarUrl = snapshot.val().avatarUrl; //When backend is hookedup.
-	
+// 					var displayName = 'Fuck HEAd';
+// 					var avatarUrl = 'imgs/sock1.jpg';
+					var displayName = snapshot.val().displayName; //When backend is hookedup.
+					var avatarUrl = snapshot.val().avatarUrl; //When backend is hookedup.
+						
 					this.setState($.extend(props, {
 						displayName: displayName,
-						'image-path': avatarUrl
+						avatarUrl: avatarUrl,
+						'image-path': props['image-path']
 					}))
 				}.bind(this));
 			}.bind(this));
@@ -126,6 +134,7 @@ define(function(){
             var page,
 				item,
 				buyButton,
+				buyButtonWrapper,
 				desc,
 				user,
 				columnSidebar,
@@ -133,14 +142,17 @@ define(function(){
 				
 				user = User($.extend({wrapperClass: 'column1 user'}, this.state));				
 				desc = Desc($.extend(new fakeTraits, this.state));
+				
 				buyButton = React.DOM.div({
 					className: 'buy-button',
 					onClick: function() {
 						console.log('sock bought');
 					}
 				}, 'Buy this sock!');
+
+				buyButtonWrapper = React.DOM.div({className: 'buy-wrapper'}, buyButton)
 				
-				columnSidebar = React.DOM.div({className: 'column-sidebar'}, [user, buyButton, desc]);
+				columnSidebar = React.DOM.div({className: 'column-sidebar'}, [user, buyButtonWrapper, desc]);
 				
 				item = Item($.extend({wrapperClass: 'column2'}, this.state));				
 				

@@ -114,7 +114,7 @@ body {
 
 .column-sidebar {
     .header {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: @caption-height;
     padding: 18px;
@@ -124,6 +124,8 @@ body {
     font-size: 20px;
     text-align: left;
     z-index: 2;
+    top: 60px;
+margin-top: -60px;
   }
 }
 
@@ -163,9 +165,12 @@ body {
   }
 }
 
+.buy-wrapper {
+float: left;
+width: 320px;
+}
+
 .buy-button {
-  float: left;
-  width: 320px;
   height: 90px;
   line-height: 90px;
   background: #3498db;
@@ -274,8 +279,10 @@ body {
   z-index: -1;
   
   position: fixed;
-  width: 110%;
-  height: 110%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   opacity: .8;
   
   -webkit-transition: background 2s linear;
@@ -286,7 +293,6 @@ body {
   
   background-position: top center;
   background-color: #000;
-  background-attachment:fixed;
   
   &.landing {
     background-image: url(/../imgs/sock1.jpg);
