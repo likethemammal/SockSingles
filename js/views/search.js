@@ -31,18 +31,23 @@ define(['views/grid', "views/filter"], function(Grid, Filter){
     render:function(){
       var parameters = SS.getParameters(),
           filterComponents = parameters.map(function(param){
-            return Filter({parameter:param,
-                           onFiltered: this.filterSocks,
-                           socks: this.state.socks,
-                           key: param.name});
+            return React.DOM.div({className: 'filter-wrapper'},
+				Filter({parameter:param,
+					onFiltered: this.filterSocks,
+					socks: this.state.socks,
+					key: param.name
+				}));
       }.bind(this));
 
       var socks = this.unionFilteredSocks();
-
+	var filterComps = React.DOM.div({className:"filters"}, filterComponents)
+	
       return (
         React.DOM.div(
           {className:"searchPage"},
-          React.DOM.div({className:"filters"}, filterComponents),
+		  React.DOM.div({
+			  className: 'filters-wrapper'
+		  }, filterComps),
           Grid({socks:socks}))
       );
     }

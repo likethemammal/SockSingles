@@ -1,12 +1,12 @@
 define(function(){
   return React.createClass({
     colorPicker: function(parameter){
-      return React.DOM.input({className:"colorPicker",
+      return React.DOM.input({className:"colorPicker colorSlider slider filter",
                               type: "color",
                               onChange: this.props.onColorChange})
     },
     sliderPicker: function(parameter){
-      return React.DOM.input({className:"sliderPicker",
+      return React.DOM.input({className:"sliderPicker " + parameter.name + 'Slider filter',
                               type: "range",
                               min:"0",
                               max: parameter.values.length,
