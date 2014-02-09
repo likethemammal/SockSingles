@@ -41,13 +41,16 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
 
 		render: function(){
 
+      var nav =  this.state.pageName === "landing" ? null : Nav({}),
+          sideTab =  this.state.pageName === "landing" ? null : SideTab({showTab:this.state.showTab,
+                                                                         onTabShow: this.onTabShow,
+                                                                         onTabHide: this.onTabHide})
+
       return React.DOM.div(
         {},
         React.DOM.div({}, this.page(this.state.pageName)),
-		Nav({}),
-        SideTab({showTab:this.state.showTab,
-                 onTabShow: this.onTabShow,
-                 onTabHide: this.onTabHide})
+        nav,
+        sideTab
       )
 		}
 	});
