@@ -6,6 +6,7 @@
 
 body {
   margin: 0;
+  background: #000;
 }
 
 .hide {
@@ -19,6 +20,7 @@ body {
   max-width: @grid-width;
   margin: 0 auto;
   padding-top: 45px;
+  text-align: center;
 }
 
 .grid-sizer {
@@ -174,9 +176,10 @@ body {
   position: fixed;
   width: 110%;
   height: 110%;
+  opacity: .8;
   
   -webkit-transition: background 2s linear;
-
+  
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -185,14 +188,12 @@ body {
   background-color: #000;
   background-attachment:fixed;
   
-  -webkit-filter: blur(5px);
-
   &.landing {
-    background-image: url('http://i.imgur.com/OFBQvO7.jpg');
+    background-image: url(/../imgs/sock1.jpg);
   }
   
   &.login-signup {
-    background-image: url('http://i.imgur.com/RCedKJi.jpg');
+    background-image: url(/../imgs/sock2.jpg);
   }
 }
 
