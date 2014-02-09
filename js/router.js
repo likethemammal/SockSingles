@@ -28,6 +28,10 @@ define(['jsx!views/root'], function(Root){
       "":function(){
         root.setState({pageName:"landing"})
       },
+      "sell":function(){
+        root.setState({pageName:"search",
+                       showTab:"true"})
+      },
       "foo":function(){
         console.log("foo")
         root.setState({pageName:"foo"})
