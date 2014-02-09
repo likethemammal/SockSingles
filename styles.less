@@ -374,15 +374,15 @@ width: 320px;
     border: none;
     width: 324px;
     height: 84px;
-    
+
 }
 
 .lengthSlider {
   position: relative;
   left: -12px;
   width: 289px;
-  
-  
+
+
       &:before {
         content: 'Length';
         position: absolute;
@@ -413,7 +413,55 @@ width: 320px;
   }
 }
 
+.popup {
+  position:fixed;
+  color: #4c3327;
+  font-family: Helvetica, Arial, sans-serif;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  background:rgba(0,0,0, 0.8);
+  z-index:3;
+  overflow:auto;
+  display:none;
+}
 
+.popup h2 {
+  font-size: 22px;
+}
+
+.modal {
+  background:#ffffff;
+  position:absolute;
+  top:50px;
+  left:50%;
+  margin-left:-350px;
+  width:700px;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+.modal .titlebar {
+  height:12px;
+  margin-bottom:50px;
+}
+
+.modal .close {
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:url("http://f.cl.ly/items/1n040x241h0w0Q1h020M/close.png") no-repeat;
+  background-position:0 0;
+  width:12px;
+  height:12px;
+}
+
+.modal .close:hover {
+  background-position:0 -12px;
+}
 
 @media only screen and (max-width: 960px) {
   .column2 {

@@ -37,7 +37,6 @@ define(["views/picker"],function(Picker){
       this.props.onFiltered("color", filteredSocks)
     },
 
-
     render: function(){
       return Picker({onColorChange: this.onColorChange,
                      onSliderChange: this.onSliderChange,

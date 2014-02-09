@@ -1,4 +1,4 @@
-define(function(){
+define(["jsx!views/overlay"],function(Overlay){
 	var SS = sock_singles.core;
 
 	var fakeTraits = function() {
@@ -19,8 +19,6 @@ define(function(){
 				header = React.DOM.div({className: 'header'}, this.props.header);
 				itemChildren.push(header);
 			}
-
-      console.log("props: ", this.props)
 
       caption = React.DOM.div({ className: 'caption' }, this.props.title);
       itemChildren.push(caption);
@@ -107,7 +105,6 @@ define(function(){
 
 
 		componentWillMount: function() {
-			console.log("woah!");
 			SS.getSocks().done(function(socks){
 
         var sock;
@@ -133,6 +130,21 @@ define(function(){
 			}.bind(this));
 		},
 
+    createOverlay: function(){
+      if (this.state.overlay){
+        return Overlay({
+          title: this.state.overlay.title,
+          content: this.state.overlay.content,
+          onCloseClick: function(){
+            this.setState({overlay:false})
+          }.bind(this)}
+        );
+
+      }else{
+        return null;
+      }
+    },
+
 		render: function(){
 
       var page,
@@ -142,7 +154,10 @@ define(function(){
           desc,
           user,
           columnSidebar,
-          columnMain;
+          columnMain,
+          overlay;
+
+      overlay = this.createOverlay()
 
       user = User($.extend({wrapperClass: 'column1 user'}, this.state));
       desc = Desc($.extend(new fakeTraits, this.state));
@@ -150,8 +165,12 @@ define(function(){
       buyButton = React.DOM.div({
         className: 'buy-button',
         onClick: function() {
+          this.setState({overlay:{
+            title:"Congrats!",
+            content: "You got a sock!!"
+          }})
           // 						window.location.hash = ''
-        }
+        }.bind(this)
       }, 'Buy this sock!');
 
       buyButtonWrapper = React.DOM.div({className: 'buy-wrapper'}, buyButton)
@@ -162,7 +181,7 @@ define(function(){
 
       columnMain = React.DOM.div({className: 'column-main'}, item);
 
-      page = React.DOM.div({}, [columnMain, columnSidebar]);
+      page = React.DOM.div({}, [columnMain, columnSidebar], overlay);
       return page;
     }
   });
