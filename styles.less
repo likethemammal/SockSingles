@@ -37,7 +37,7 @@ body {
   float: left;
 }
 
-.item {  
+.item {
   position: relative;
   width: 100%;
   height: 100%;
@@ -46,13 +46,13 @@ body {
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-  
+
   color: #fff;
   text-shadow: @text-shadow;
   box-shadow: @box-shadow;
 
-  
-    
+
+
   &:hover {
     .caption {
       bottom: @caption-height*-1;
@@ -61,7 +61,7 @@ body {
       top: @caption-height*-1;
     }
   }
-  
+
   .caption {
     position: absolute;
     width: 100%;
@@ -73,11 +73,11 @@ body {
     font-weight: bold;
     font-size: 20px;
     text-align: left;
-    
+
     -webkit-transition: bottom 200ms ease-in-out;
     transition: bottom 200ms ease-in-out;
   }
-  
+
   .features {
     position: absolute;
     width: 100%;
@@ -89,17 +89,17 @@ body {
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-    
+
     -webkit-transition: top 200ms ease-in-out;
     transition: top 200ms ease-in-out;
 
   }
-  
+
   .feature {
     display: inline-block;
     width: 33%;
   }
-  
+
   .color-box {
     position: relative;
     display: inline-block;
@@ -108,7 +108,7 @@ body {
     top: 4px;
     border: 1px solid #000;
     text-align: center;
-    
+
     box-shadow: 0 0 2px rgba(0, 0, 0, 1);
   }
 }
@@ -141,7 +141,7 @@ margin-top: -60px;
   padding: 15px;
   color: #fff;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 1);
-  
+
   .trait-list {
     position: relative;
     text-align: left;
@@ -158,7 +158,7 @@ margin-top: -60px;
     li {
       margin-bottom: 5px;
     }
-    
+
     li:last-child {
       margin-bottom: 0;
     }
@@ -181,14 +181,14 @@ width: 320px;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
-  
+
   -webkit-transition: 100ms linear;
-  
+
   &:hover {
     background: #2980b9;
     -webkit-transform: scale(1.1);
   }
-  
+
 }
 
 
@@ -222,7 +222,7 @@ width: 320px;
 
 
 .sideTab {
-  z-index: 10000;
+  z-index: 3;
 }
 
 
@@ -249,11 +249,11 @@ width: 320px;
   color: #fff;
   font-weight: bold;
   font-size: 70px;
-  outline: none; 
+  outline: none;
 
-  
+
   -webkit-transition: 100ms linear;
-  
+
   &:hover {
     -webkit-transform: scale(1.1);
   }
@@ -278,27 +278,27 @@ width: 320px;
 
 #background {
   z-index: -1;
-  
+
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   opacity: .8;
-  
+
   -webkit-transition: background 2s linear;
-  
+
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
-  
+
   background-position: top center;
   background-color: #000;
-  
+
   &.landing {
     background-image: url(/../imgs/sock1.jpg);
   }
-  
+
   &.login-signup {
     background-image: url(/../imgs/sock2.jpg);
   }
@@ -308,7 +308,7 @@ width: 320px;
 
 .nav {
   position: fixed;
-  z-index: 1000000;
+  z-index: 2;
   height: 60px;
   background: rgba(255,255,255,0.3);
   width: 100%;
@@ -321,19 +321,19 @@ width: 320px;
   font-size: 20px;
   line-height: 60px;
   text-transform: uppercase;
-  
+
   .nav-item {
     width: 100px;
     height: 100%;
 /*     margin-right: 30px; */
     float: left;
     cursor: pointer;
-    
+
     &:hover {
       background: rgba(255,255,255,0.3);
     }
   }
-  
+
   .nav-tab {
     float: right;
   }
@@ -345,16 +345,16 @@ width: 320px;
   .column2 {
         width: @grid-width/@num-columns;
         height: @grid-width/@num-columns;
-  
+
       .item {
           background-size: auto @grid-width/@num-columns;
       }
   }
-  
+
   .column-main .column2 {
         width: @grid-width*2/@num-columns;
         height: @grid-width*2/@num-columns;
-  
+
       .item {
           background-size: auto @grid-width*2/@num-columns;
       }
