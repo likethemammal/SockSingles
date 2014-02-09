@@ -18,11 +18,9 @@
    rand-nth))
 
 (def stock-pictures
-  ["http://i.imgur.com/K5bDhOb.jpg"
-   "http://i.imgur.com/CW509KC.jpg"
-   "http://i.imgur.com/OFBQvO7.jpg"
-   "http://i.imgur.com/RCedKJi.jpg"
-   "http://i.imgur.com/K0fTAc9.jpg"])
+  ["/../imgs/sock1.jpg"
+   "/../imgs/sock2.jpg"
+   "/../imgs/sock2.jpg"])
 
 (def stock-usernames
   ["ElChupacabra" "MarcoPolo" "likethemammal" "MrManager"])

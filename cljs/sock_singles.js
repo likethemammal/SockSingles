@@ -17451,7 +17451,7 @@ sock_singles.simulated.random_parameter = function(a) {
     return cljs.core._EQ_.call(null, a, (new cljs.core.Keyword(null, "name", "name", 1017277949)).cljs$core$IFn$_invoke$arity$1(b));
   }, sock_singles.parameters.parameters))));
 };
-sock_singles.simulated.stock_pictures = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["http://i.imgur.com/K5bDhOb.jpg", "http://i.imgur.com/CW509KC.jpg", "http://i.imgur.com/OFBQvO7.jpg", "http://i.imgur.com/RCedKJi.jpg", "http://i.imgur.com/K0fTAc9.jpg"], null);
+sock_singles.simulated.stock_pictures = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["/../imgs/sock1.jpg", "/../imgs/sock2.jpg", "/../imgs/sock2.jpg"], null);
 sock_singles.simulated.stock_usernames = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, ["ElChupacabra", "MarcoPolo", "likethemammal", "MrManager"], null);
 sock_singles.simulated.stock_titles = new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, "Fuzzy Wuzzy;Sock it to me it;Linty Linda;Sleepless in Sockeatlle;Socker Star;Sockretes".split(";"), null);
 sock_singles.simulated.get_socks = function(a) {

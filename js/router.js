@@ -21,9 +21,9 @@ define(['jsx!views/root'], function(Root){
       "single/:id":function(id){
         console.log("Going to single Page")
         root.setState({
-			pageName:"single",
-			id: id
-		})
+          pageName:"single",
+          id: id
+        })
       },
       "":function(){
         root.setState({pageName:"landing"})
