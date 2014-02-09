@@ -1,5 +1,6 @@
 (ns sock-singles.util
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [clojure.set :as set]))
 
 (defn gen-promise []
   (js/$.Deferred.))
@@ -11,7 +12,6 @@
           (subs color 2 4)
           (subs color 4 6)])))
 
-(def length-threshold 4)
 (def color-threshold 275)
 
 (defn color-distance [color1 color2]
@@ -29,6 +29,16 @@
   (> color-threshold
      (color-distance color1 color2)))
 
-(defn lengthFilter [length1 length2]
-  (> length-threshold
+(defn lengthFilter [length1 length2 threshold]
+  (> threshold
      (length-distance length1 length2)))
+
+(defn ->vecs [arrays]
+  (mapv js->clj arrays))
+
+(defn intersect-vecs [vecs]
+  (apply set/intersection
+         (map set vecs)))
+
+(defn intersectArrays [arrays]
+  (-> arrays ->vecs intersect-vecs clj->js))

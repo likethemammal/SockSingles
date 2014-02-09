@@ -3556,16 +3556,16 @@ cljs.core.fn_QMARK_ = function(a) {
 };
 cljs.core.with_meta = function with_meta(b, c) {
   return cljs.core.fn_QMARK_.call(null, b) && !(b ? b.cljs$lang$protocol_mask$partition0$ & 262144 || b.cljs$core$IWithMeta$ || (b.cljs$lang$protocol_mask$partition0$ ? 0 : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.IWithMeta, b)) : cljs.core.native_satisfies_QMARK_.call(null, cljs.core.IWithMeta, b)) ? with_meta.call(null, function() {
-    "undefined" === typeof cljs.core.t5704 && (cljs.core.t5704 = function(b, c, f, g) {
+    "undefined" === typeof cljs.core.t5733 && (cljs.core.t5733 = function(b, c, f, g) {
       this.meta = b;
       this.o = c;
       this.with_meta = f;
-      this.meta5705 = g;
+      this.meta5734 = g;
       this.cljs$lang$protocol_mask$partition1$ = 0;
       this.cljs$lang$protocol_mask$partition0$ = 393217;
-    }, cljs.core.t5704.cljs$lang$type = !0, cljs.core.t5704.cljs$lang$ctorStr = "cljs.core/t5704", cljs.core.t5704.cljs$lang$ctorPrWriter = function(b, c, f) {
-      return cljs.core._write.call(null, c, "cljs.core/t5704");
-    }, cljs.core.t5704.prototype.call = function() {
+    }, cljs.core.t5733.cljs$lang$type = !0, cljs.core.t5733.cljs$lang$ctorStr = "cljs.core/t5733", cljs.core.t5733.cljs$lang$ctorPrWriter = function(b, c, f) {
+      return cljs.core._write.call(null, c, "cljs.core/t5733");
+    }, cljs.core.t5733.prototype.call = function() {
       var b = function(b, c) {
         return cljs.core.apply.call(null, b.o, c);
       }, c = function(c, e) {
@@ -3582,9 +3582,9 @@ cljs.core.with_meta = function with_meta(b, c) {
       };
       c.cljs$core$IFn$_invoke$arity$variadic = b;
       return c;
-    }(), cljs.core.t5704.prototype.apply = function(b, c) {
+    }(), cljs.core.t5733.prototype.apply = function(b, c) {
       return this.call.apply(this, [this].concat(cljs.core.aclone.call(null, c)));
-    }, cljs.core.t5704.prototype.cljs$core$IFn$_invoke$arity$2 = function() {
+    }, cljs.core.t5733.prototype.cljs$core$IFn$_invoke$arity$2 = function() {
       var b = function(b) {
         return cljs.core.apply.call(null, self__.o, b);
       }, c = function(c) {
@@ -3599,14 +3599,14 @@ cljs.core.with_meta = function with_meta(b, c) {
       };
       c.cljs$core$IFn$_invoke$arity$variadic = b;
       return c;
-    }(), cljs.core.t5704.prototype.cljs$core$Fn$ = !0, cljs.core.t5704.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
-      return this.meta5705;
-    }, cljs.core.t5704.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-      return new cljs.core.t5704(this.meta, this.o, this.with_meta, c);
-    }, cljs.core.__GT_t5704 = function(b, c, f, g) {
-      return new cljs.core.t5704(b, c, f, g);
+    }(), cljs.core.t5733.prototype.cljs$core$Fn$ = !0, cljs.core.t5733.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
+      return this.meta5734;
+    }, cljs.core.t5733.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+      return new cljs.core.t5733(this.meta, this.o, this.with_meta, c);
+    }, cljs.core.__GT_t5733 = function(b, c, f, g) {
+      return new cljs.core.t5733(b, c, f, g);
     });
-    return new cljs.core.t5704(c, b, with_meta, null);
+    return new cljs.core.t5733(c, b, with_meta, null);
   }(), c) : null == b ? null : cljs.core._with_meta.call(null, b, c);
 };
 cljs.core.meta = function(a) {
@@ -13916,6 +13916,239 @@ clojure.string.escape = function(a, b) {
     e += 1;
   }
 };
+clojure.set = {};
+clojure.set.bubble_max_key = function(a, b) {
+  var c = cljs.core.apply.call(null, cljs.core.max_key, a, b);
+  return cljs.core.cons.call(null, c, cljs.core.remove.call(null, function(a) {
+    return c === a;
+  }, b));
+};
+clojure.set.union = function() {
+  var a = null, b = function() {
+    return cljs.core.PersistentHashSet.EMPTY;
+  }, c = function(a, b) {
+    return cljs.core.count.call(null, a) < cljs.core.count.call(null, b) ? cljs.core.reduce.call(null, cljs.core.conj, b, a) : cljs.core.reduce.call(null, cljs.core.conj, a, b);
+  }, d = function() {
+    var a = function(a, b, c) {
+      a = clojure.set.bubble_max_key.call(null, cljs.core.count, cljs.core.conj.call(null, c, b, a));
+      return cljs.core.reduce.call(null, cljs.core.into, cljs.core.first.call(null, a), cljs.core.rest.call(null, a));
+    }, b = function(b, c, d) {
+      var f = null;
+      2 < arguments.length && (f = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+      return a.call(this, b, c, f);
+    };
+    b.cljs$lang$maxFixedArity = 2;
+    b.cljs$lang$applyTo = function(b) {
+      var c = cljs.core.first(b);
+      b = cljs.core.next(b);
+      var d = cljs.core.first(b);
+      b = cljs.core.rest(b);
+      return a(c, d, b);
+    };
+    b.cljs$core$IFn$_invoke$arity$variadic = a;
+    return b;
+  }(), a = function(a, f, g) {
+    switch(arguments.length) {
+      case 0:
+        return b.call(this);
+      case 1:
+        return a;
+      case 2:
+        return c.call(this, a, f);
+      default:
+        return d.cljs$core$IFn$_invoke$arity$variadic(a, f, cljs.core.array_seq(arguments, 2));
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$maxFixedArity = 2;
+  a.cljs$lang$applyTo = d.cljs$lang$applyTo;
+  a.cljs$core$IFn$_invoke$arity$0 = b;
+  a.cljs$core$IFn$_invoke$arity$1 = function(a) {
+    return a;
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = c;
+  a.cljs$core$IFn$_invoke$arity$variadic = d.cljs$core$IFn$_invoke$arity$variadic;
+  return a;
+}();
+clojure.set.intersection = function() {
+  var a = null, b = function(a, b) {
+    for (;;) {
+      if (cljs.core.count.call(null, b) < cljs.core.count.call(null, a)) {
+        var c = a;
+        a = b;
+        b = c;
+      } else {
+        return cljs.core.reduce.call(null, function(a, b) {
+          return function(a, c) {
+            return cljs.core.contains_QMARK_.call(null, b, c) ? a : cljs.core.disj.call(null, a, c);
+          };
+        }(a, b), a, a);
+      }
+    }
+  }, c = function() {
+    var b = function(b, c, d) {
+      b = clojure.set.bubble_max_key.call(null, function(a) {
+        return-cljs.core.count.call(null, a);
+      }, cljs.core.conj.call(null, d, c, b));
+      return cljs.core.reduce.call(null, a, cljs.core.first.call(null, b), cljs.core.rest.call(null, b));
+    }, c = function(a, c, e) {
+      var k = null;
+      2 < arguments.length && (k = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+      return b.call(this, a, c, k);
+    };
+    c.cljs$lang$maxFixedArity = 2;
+    c.cljs$lang$applyTo = function(a) {
+      var c = cljs.core.first(a);
+      a = cljs.core.next(a);
+      var e = cljs.core.first(a);
+      a = cljs.core.rest(a);
+      return b(c, e, a);
+    };
+    c.cljs$core$IFn$_invoke$arity$variadic = b;
+    return c;
+  }(), a = function(a, e, f) {
+    switch(arguments.length) {
+      case 1:
+        return a;
+      case 2:
+        return b.call(this, a, e);
+      default:
+        return c.cljs$core$IFn$_invoke$arity$variadic(a, e, cljs.core.array_seq(arguments, 2));
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$maxFixedArity = 2;
+  a.cljs$lang$applyTo = c.cljs$lang$applyTo;
+  a.cljs$core$IFn$_invoke$arity$1 = function(a) {
+    return a;
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$variadic = c.cljs$core$IFn$_invoke$arity$variadic;
+  return a;
+}();
+clojure.set.difference = function() {
+  var a = null, b = function(a, b) {
+    return cljs.core.count.call(null, a) < cljs.core.count.call(null, b) ? cljs.core.reduce.call(null, function(a, c) {
+      return cljs.core.contains_QMARK_.call(null, b, c) ? cljs.core.disj.call(null, a, c) : a;
+    }, a, a) : cljs.core.reduce.call(null, cljs.core.disj, a, b);
+  }, c = function() {
+    var b = function(b, c, d) {
+      return cljs.core.reduce.call(null, a, b, cljs.core.conj.call(null, d, c));
+    }, c = function(a, c, e) {
+      var k = null;
+      2 < arguments.length && (k = cljs.core.array_seq(Array.prototype.slice.call(arguments, 2), 0));
+      return b.call(this, a, c, k);
+    };
+    c.cljs$lang$maxFixedArity = 2;
+    c.cljs$lang$applyTo = function(a) {
+      var c = cljs.core.first(a);
+      a = cljs.core.next(a);
+      var e = cljs.core.first(a);
+      a = cljs.core.rest(a);
+      return b(c, e, a);
+    };
+    c.cljs$core$IFn$_invoke$arity$variadic = b;
+    return c;
+  }(), a = function(a, e, f) {
+    switch(arguments.length) {
+      case 1:
+        return a;
+      case 2:
+        return b.call(this, a, e);
+      default:
+        return c.cljs$core$IFn$_invoke$arity$variadic(a, e, cljs.core.array_seq(arguments, 2));
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$lang$maxFixedArity = 2;
+  a.cljs$lang$applyTo = c.cljs$lang$applyTo;
+  a.cljs$core$IFn$_invoke$arity$1 = function(a) {
+    return a;
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$variadic = c.cljs$core$IFn$_invoke$arity$variadic;
+  return a;
+}();
+clojure.set.select = function(a, b) {
+  return cljs.core.reduce.call(null, function(b, d) {
+    return cljs.core.truth_(a.call(null, d)) ? b : cljs.core.disj.call(null, b, d);
+  }, b, b);
+};
+clojure.set.project = function(a, b) {
+  return cljs.core.set.call(null, cljs.core.map.call(null, function(a) {
+    return cljs.core.select_keys.call(null, a, b);
+  }, a));
+};
+clojure.set.rename_keys = function(a, b) {
+  return cljs.core.reduce.call(null, function(a, b) {
+    var e = cljs.core.nth.call(null, b, 0, null), f = cljs.core.nth.call(null, b, 1, null);
+    return cljs.core.not_EQ_.call(null, e, f) && cljs.core.contains_QMARK_.call(null, a, e) ? cljs.core.dissoc.call(null, cljs.core.assoc.call(null, a, f, cljs.core.get.call(null, a, e)), e) : a;
+  }, a, b);
+};
+clojure.set.rename = function(a, b) {
+  return cljs.core.set.call(null, cljs.core.map.call(null, function(a) {
+    return clojure.set.rename_keys.call(null, a, b);
+  }, a));
+};
+clojure.set.index = function(a, b) {
+  return cljs.core.reduce.call(null, function(a, d) {
+    var e = cljs.core.select_keys.call(null, d, b);
+    return cljs.core.assoc.call(null, a, e, cljs.core.conj.call(null, cljs.core.get.call(null, a, e, cljs.core.PersistentHashSet.EMPTY), d));
+  }, cljs.core.PersistentArrayMap.EMPTY, a);
+};
+clojure.set.map_invert = function(a) {
+  return cljs.core.reduce.call(null, function(a, c) {
+    var d = cljs.core.nth.call(null, c, 0, null), e = cljs.core.nth.call(null, c, 1, null);
+    return cljs.core.assoc.call(null, a, e, d);
+  }, cljs.core.PersistentArrayMap.EMPTY, a);
+};
+clojure.set.join = function() {
+  var a = null, b = function(a, b) {
+    if (cljs.core.seq.call(null, a) && cljs.core.seq.call(null, b)) {
+      var c = clojure.set.intersection.call(null, cljs.core.set.call(null, cljs.core.keys.call(null, cljs.core.first.call(null, a))), cljs.core.set.call(null, cljs.core.keys.call(null, cljs.core.first.call(null, b)))), g = cljs.core.count.call(null, a) <= cljs.core.count.call(null, b) ? new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [a, b], null) : new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [b, a], null), h = cljs.core.nth.call(null, 
+      g, 0, null), g = cljs.core.nth.call(null, g, 1, null), k = clojure.set.index.call(null, h, c);
+      return cljs.core.reduce.call(null, function(a, b) {
+        var d = k.call(null, cljs.core.select_keys.call(null, b, c));
+        return cljs.core.truth_(d) ? cljs.core.reduce.call(null, function(a, c) {
+          return cljs.core.conj.call(null, a, cljs.core.merge.call(null, c, b));
+        }, a, d) : a;
+      }, cljs.core.PersistentHashSet.EMPTY, g);
+    }
+    return cljs.core.PersistentHashSet.EMPTY;
+  }, c = function(a, b, c) {
+    a = cljs.core.count.call(null, a) <= cljs.core.count.call(null, b) ? new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [a, b, clojure.set.map_invert.call(null, c)], null) : new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [b, a, c], null);
+    b = cljs.core.nth.call(null, a, 0, null);
+    c = cljs.core.nth.call(null, a, 1, null);
+    var g = cljs.core.nth.call(null, a, 2, null), h = clojure.set.index.call(null, b, cljs.core.vals.call(null, g));
+    return cljs.core.reduce.call(null, function(a, b) {
+      var c = h.call(null, clojure.set.rename_keys.call(null, cljs.core.select_keys.call(null, b, cljs.core.keys.call(null, g)), g));
+      return cljs.core.truth_(c) ? cljs.core.reduce.call(null, function(a, c) {
+        return cljs.core.conj.call(null, a, cljs.core.merge.call(null, c, b));
+      }, a, c) : a;
+    }, cljs.core.PersistentHashSet.EMPTY, c);
+  }, a = function(a, e, f) {
+    switch(arguments.length) {
+      case 2:
+        return b.call(this, a, e);
+      case 3:
+        return c.call(this, a, e, f);
+    }
+    throw Error("Invalid arity: " + arguments.length);
+  };
+  a.cljs$core$IFn$_invoke$arity$2 = b;
+  a.cljs$core$IFn$_invoke$arity$3 = c;
+  return a;
+}();
+clojure.set.subset_QMARK_ = function(a, b) {
+  return cljs.core.count.call(null, a) <= cljs.core.count.call(null, b) && cljs.core.every_QMARK_.call(null, function(a) {
+    return cljs.core.contains_QMARK_.call(null, b, a);
+  }, a);
+};
+clojure.set.superset_QMARK_ = function(a, b) {
+  return cljs.core.count.call(null, a) >= cljs.core.count.call(null, b) && cljs.core.every_QMARK_.call(null, function(b) {
+    return cljs.core.contains_QMARK_.call(null, a, b);
+  }, b);
+};
 var sock_singles = {util:{}};
 sock_singles.util.gen_promise = function() {
   return new $.Deferred;
@@ -13926,7 +14159,6 @@ sock_singles.util.split_color = function(a) {
     return parseInt(a, 16);
   }, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.subs.call(null, a, 0, 2), cljs.core.subs.call(null, a, 2, 4), cljs.core.subs.call(null, a, 4, 6)], null));
 };
-sock_singles.util.length_threshold = 4;
 sock_singles.util.color_threshold = 275;
 sock_singles.util.color_distance = function(a, b) {
   var c = sock_singles.util.split_color.call(null, a), d = sock_singles.util.split_color.call(null, b);
@@ -13940,8 +14172,17 @@ sock_singles.util.length_distance = function(a, b) {
 sock_singles.util.colorFilter = function(a, b) {
   return sock_singles.util.color_threshold > sock_singles.util.color_distance.call(null, a, b);
 };
-sock_singles.util.lengthFilter = function(a, b) {
-  return sock_singles.util.length_threshold > sock_singles.util.length_distance.call(null, a, b);
+sock_singles.util.lengthFilter = function(a, b, c) {
+  return c > sock_singles.util.length_distance.call(null, a, b);
+};
+sock_singles.util.__GT_vecs = function(a) {
+  return cljs.core.mapv.call(null, cljs.core.js__GT_clj, a);
+};
+sock_singles.util.intersect_vecs = function(a) {
+  return cljs.core.apply.call(null, clojure.set.intersection, cljs.core.map.call(null, cljs.core.set, a));
+};
+sock_singles.util.intersectArrays = function(a) {
+  return cljs.core.clj__GT_js.call(null, sock_singles.util.intersect_vecs.call(null, sock_singles.util.__GT_vecs.call(null, a)));
 };
 var om = {dom:{}};
 om.dom.a = function() {
@@ -17098,25 +17339,25 @@ om.core.graft = function(a, b) {
 };
 sock_singles.components = {};
 sock_singles.components.widget = function widget(b, c) {
-  "undefined" === typeof sock_singles.components.t6862 && (sock_singles.components.t6862 = function(b, c, f, g) {
+  "undefined" === typeof sock_singles.components.t5512 && (sock_singles.components.t5512 = function(b, c, f, g) {
     this.owner = b;
     this.data = c;
     this.widget = f;
-    this.meta6863 = g;
+    this.meta5513 = g;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216;
-  }, sock_singles.components.t6862.cljs$lang$type = !0, sock_singles.components.t6862.cljs$lang$ctorStr = "sock-singles.components/t6862", sock_singles.components.t6862.cljs$lang$ctorPrWriter = function(b, c, f) {
-    return cljs.core._write.call(null, c, "sock-singles.components/t6862");
-  }, sock_singles.components.t6862.prototype.om$core$IRender$ = !0, sock_singles.components.t6862.prototype.om$core$IRender$render$arity$1 = function(b) {
+  }, sock_singles.components.t5512.cljs$lang$type = !0, sock_singles.components.t5512.cljs$lang$ctorStr = "sock-singles.components/t5512", sock_singles.components.t5512.cljs$lang$ctorPrWriter = function(b, c, f) {
+    return cljs.core._write.call(null, c, "sock-singles.components/t5512");
+  }, sock_singles.components.t5512.prototype.om$core$IRender$ = !0, sock_singles.components.t5512.prototype.om$core$IRender$render$arity$1 = function(b) {
     return React.DOM.h1(null, (new cljs.core.Keyword(null, "text", "text", 1017460895)).cljs$core$IFn$_invoke$arity$1(this.data));
-  }, sock_singles.components.t6862.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
-    return this.meta6863;
-  }, sock_singles.components.t6862.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-    return new sock_singles.components.t6862(this.owner, this.data, this.widget, c);
-  }, sock_singles.components.__GT_t6862 = function(b, c, f, g) {
-    return new sock_singles.components.t6862(b, c, f, g);
+  }, sock_singles.components.t5512.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
+    return this.meta5513;
+  }, sock_singles.components.t5512.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+    return new sock_singles.components.t5512(this.owner, this.data, this.widget, c);
+  }, sock_singles.components.__GT_t5512 = function(b, c, f, g) {
+    return new sock_singles.components.t5512(b, c, f, g);
   });
-  return new sock_singles.components.t6862(c, b, widget, null);
+  return new sock_singles.components.t5512(c, b, widget, null);
 };
 sock_singles.service = {};
 cljs.core.enable_console_print_BANG_.call(null);
@@ -17153,8 +17394,10 @@ sock_singles.service.get_socks = function() {
       var b = cljs.core.nth.call(null, a, 0, null);
       a = cljs.core.nth.call(null, a, 1, null);
       return cljs.core.map.call(null, function(a) {
-        return cljs.core.assoc.call(null, a, new cljs.core.Keyword(null, "username", "username", 748190792), b);
-      }, cljs.core.vals.call(null, a));
+        var c = cljs.core.nth.call(null, a, 0, null);
+        a = cljs.core.nth.call(null, a, 1, null);
+        return cljs.core.assoc.call(null, a, new cljs.core.Keyword(null, "username", "username", 748190792), b, new cljs.core.Keyword(null, "id", "id", 1013907597), c);
+      }, a);
     }, cljs.core.js__GT_clj.call(null, b.val()))));
   });
   return a;

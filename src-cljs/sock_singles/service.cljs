@@ -38,7 +38,7 @@
               (js->clj)
               (mapcat
                (fn [[user socks]]
-                 (map #(assoc % :username user) (vals socks))))
+                 (map (fn [[id sock]] (assoc sock :username user :id id)) socks)))
               (clj->js)
               (.resolve promise))))
     promise))
