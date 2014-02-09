@@ -1,4 +1,4 @@
-define(function(){
+define(["views/picker"],function(Picker){
   return React.createClass({
     onSliderChange: function(e){
       var socks = this.props.socks,
@@ -37,36 +37,10 @@ define(function(){
       this.props.onFiltered("color", filteredSocks)
     },
 
-    colorPicker: function(parameter){
-      return React.DOM.input({className:"colorPicker",
-                              type: "color",
-                              onChange: this.onColorChange})
-    },
-    sliderPicker: function(parameter){
-      return React.DOM.input({className:"sliderPicker",
-                              type: "range",
-                              min:"0",
-                              max: parameter.values.length,
-                              onChange: this.onSliderChange})
-    },
-
-    defaultPicker: function(type){
-      return React.DOM.input({className:"DefaultPicker",
-                              placeholder: type,
-                              type: "text"});
-    },
-
-    pickPicker: function(type, parameter){
-      var pickers = {
-        color: this.colorPicker,
-        slider: this.sliderPicker
-      }
-      return pickers[type](parameter) || defaultPicker(type);
-    },
-
     render: function(){
-      return this.pickPicker(this.props.parameter.type,
-                             this.props.parameter);
+      return Picker({onColorChange: this.onColorChange,
+                     onSliderChange: this.onSliderChange,
+                     parameter: this.props.parameter});
     }
   })
 })

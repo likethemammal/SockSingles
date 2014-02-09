@@ -21,7 +21,15 @@ define(["views/sellSock"], function(SellSock){
       return {tabName:"default"};
     },
 
+    checkLoggedInStatus: function(){
+      if(!sock_singles.core.isLoggedIn()){
+        sock_singles.core.githubLogin();
+      }
+    },
+
     changeToSellTab: function(){
+      this.checkLoggedInStatus()
+
       this.setState({tabName:"sell"});
     },
 

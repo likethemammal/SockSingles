@@ -1,5 +1,8 @@
 /** @jsx React.DOM */
 define(['jsx!views/root'], function(Root){
+  //setup filepicker
+  filepicker.setKey("A1oJoPr6RQLapJBPDDbh9z");
+
 	var mainElement = $("[data-js-app]")[0];
 
 	var root = React.renderComponent(
