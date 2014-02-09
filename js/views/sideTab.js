@@ -9,7 +9,7 @@ define(function(){
             height: "100%",
             top: "0px",
             right: "0px",
-            width:"20%"
+            width:"200px"
           }},
           React.DOM.h2(null, "Hey there, I'm a side tab"))
 			);

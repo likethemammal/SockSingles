@@ -31,13 +31,11 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
     },
 
 		render: function(){
-      return React.DOM.div(
-        {},
-        React.DOM.div(
-          {style:{width:"80%"}},
-          this.page(this.state.pageName)),
-        SideTab()
-      )
+      return React.DOM.div({},
+        		React.DOM.div({},
+				this.page(this.state.pageName)),
+        		SideTab()
+      		)
 		}
 	});
 

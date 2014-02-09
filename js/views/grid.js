@@ -53,7 +53,8 @@ define(["views/filter"],function(Filter){
 
       grid = React.DOM.div(
         {className: 'grid'},
-        gridItems);
+        gridItems
+      );
 
       return grid;
     }

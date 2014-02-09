@@ -39,12 +39,11 @@ define(function(){
 	
 	var User = React.createClass({
 		render: function(){	
-				item = Item({
-					title: this.props.displayName,
-					'image-path': this.props['image-path']
-				});
-	
-		  return item;
+			item = Item({
+				title: this.props.displayName,
+				'image-path': this.props['image-path']
+			});
+		    return item;
 		}
 	});
 	
