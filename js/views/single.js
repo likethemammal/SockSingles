@@ -146,7 +146,7 @@ define(function(){
 				buyButton = React.DOM.div({
 					className: 'buy-button',
 					onClick: function() {
-						console.log('sock bought');
+// 						window.location.hash = ''
 					}
 				}, 'Buy this sock!');
 

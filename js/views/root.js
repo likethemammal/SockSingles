@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
-define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/single', 'views/sideTab'],
-        function(LandingPage, Search, TwoBigButtons, Single, SideTab){
+define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/single', 'views/sideTab', 'views/nav'],
+        function(LandingPage, Search, TwoBigButtons, Single, SideTab, Nav){
 	var Root = React.createClass({
 		getInitialState: function(){
 			return {
@@ -44,6 +44,7 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
       return React.DOM.div(
         {},
         React.DOM.div({}, this.page(this.state.pageName)),
+		Nav({}),
         SideTab({showTab:this.state.showTab,
                  onTabShow: this.onTabShow,
                  onTabHide: this.onTabHide})
