@@ -81,7 +81,7 @@ define(["views/picker"],function(Picker){
 
       return React.DOM.div(
         {className:"sell-sock"},
-        React.DOM.h2(null,"Sell your Socks here!"),
+        React.DOM.h2(null,"Sell here!"),
         uploadButton,
         uploadPreview,
         components,
