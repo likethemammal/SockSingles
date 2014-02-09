@@ -5,8 +5,16 @@
 
 (def logged-in-user (atom nil))
 
-(def firebase (js/Firebase. "https://luminous-fire-8648.firebaseio.com"))
+(def firebase (js/Firebase. "https://sock-singles.firebaseio.com"))
 (def users-ref (.child firebase "users"))
+
+
+(defn save-user-info! [user]
+  (let [user-ref (.child users-ref (.-username user))
+        display-name (.-displayName user)
+        avatar-url (.-avatar_url user)]
+    (.set (.child user-ref "displayName") display-name)
+    (.set (.child user-ref "avatarUrl") avatar-url)))
 
 (defn github-login! []
   (let [promise (gen-promise)
@@ -15,6 +23,7 @@
                                                    (.reject promise err))
                                                  (when user
                                                    (reset! logged-in-user user)
+                                                   (save-user-info! user)
                                                    (.resolve promise user))))]
     (.login auth "github")
     promise))
@@ -37,8 +46,9 @@
               (.val snapshot)
               (js->clj)
               (mapcat
-               (fn [[user socks]]
-                 (map (fn [[id sock]] (assoc sock :username user :id id)) socks)))
+               (fn [[user user-data]]
+                 (let [socks (get user-data "socks")]
+                   (map (fn [[id sock]] (assoc sock :username user :id id)) socks))))
               (clj->js)
               (.resolve promise))))
     promise))
@@ -53,9 +63,11 @@
   (.push marco-ref #js {:title "socky lol" :size "M"})
   (.push marco-ref #js {:title "Foo" :size "S"})
 
-
   (doseq [sock (map (comp clj->js #(dissoc % :username)) (sock-singles.simulated/get-socks 5))]
-    (.push (.child users-ref "marlonlandaverde") sock))
+    (.push (.child (.child users-ref "MarcoPolo") "socks") sock))
+
+  (.done (get-socks) #(.log js/console %))
+
 
   (.push other-ref #js {:title "My Best Sock" :size "S"})
 

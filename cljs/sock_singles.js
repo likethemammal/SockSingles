@@ -17362,14 +17362,20 @@ sock_singles.components.widget = function widget(b, c) {
 sock_singles.service = {};
 cljs.core.enable_console_print_BANG_.call(null);
 sock_singles.service.logged_in_user = cljs.core.atom.call(null, null);
-sock_singles.service.firebase = new Firebase("https://luminous-fire-8648.firebaseio.com");
+sock_singles.service.firebase = new Firebase("https://sock-singles.firebaseio.com");
 sock_singles.service.users_ref = sock_singles.service.firebase.child("users");
+sock_singles.service.save_user_info_BANG_ = function(a) {
+  var b = sock_singles.service.users_ref.child(a.username), c = a.displayName;
+  a = a.avatar_url;
+  b.child("displayName").set(c);
+  return b.child("avatarUrl").set(a);
+};
 sock_singles.service.github_login_BANG_ = function() {
   var a = sock_singles.util.gen_promise.call(null);
   (new FirebaseSimpleLogin(sock_singles.service.firebase, function(a) {
     return function(c, d) {
       cljs.core.truth_(c) && a.reject(c);
-      return cljs.core.truth_(d) ? (cljs.core.reset_BANG_.call(null, sock_singles.service.logged_in_user, d), a.resolve(d)) : null;
+      return cljs.core.truth_(d) ? (cljs.core.reset_BANG_.call(null, sock_singles.service.logged_in_user, d), sock_singles.service.save_user_info_BANG_.call(null, d), a.resolve(d)) : null;
     };
   }(a))).login("github");
   return a;
@@ -17393,6 +17399,7 @@ sock_singles.service.get_socks = function() {
     return a.resolve(cljs.core.clj__GT_js.call(null, cljs.core.mapcat.call(null, function(a) {
       var b = cljs.core.nth.call(null, a, 0, null);
       a = cljs.core.nth.call(null, a, 1, null);
+      a = cljs.core.get.call(null, a, "socks");
       return cljs.core.map.call(null, function(a) {
         var c = cljs.core.nth.call(null, a, 0, null);
         a = cljs.core.nth.call(null, a, 1, null);
@@ -17409,15 +17416,41 @@ new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null, "name", "
 sock_singles.simulated = {};
 cljs.core.enable_console_print_BANG_.call(null);
 sock_singles.simulated.random_color = function() {
-  return[cljs.core.str("#"), cljs.core.str(cljs.core.rand_int.call(null, 255).toString(16)), cljs.core.str(cljs.core.rand_int.call(null, 255).toString(16)), cljs.core.str(cljs.core.rand_int.call(null, 255).toString(16))].join("");
+  return cljs.core.apply.call(null, cljs.core.str, "#", function() {
+    return function b(c) {
+      return new cljs.core.LazySeq(null, function() {
+        for (;;) {
+          var d = cljs.core.seq.call(null, c);
+          if (d) {
+            if (cljs.core.chunked_seq_QMARK_.call(null, d)) {
+              var e = cljs.core.chunk_first.call(null, d), f = cljs.core.count.call(null, e), g = cljs.core.chunk_buffer.call(null, f);
+              a: {
+                for (var h = 0;;) {
+                  if (h < f) {
+                    cljs.core._nth.call(null, e, h), cljs.core.chunk_append.call(null, g, cljs.core.rand_int.call(null, 15).toString(16)), h += 1;
+                  } else {
+                    e = !0;
+                    break a;
+                  }
+                }
+                e = void 0;
+              }
+              return e ? cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), b.call(null, cljs.core.chunk_rest.call(null, d))) : cljs.core.chunk_cons.call(null, cljs.core.chunk.call(null, g), null);
+            }
+            cljs.core.first.call(null, d);
+            return cljs.core.cons.call(null, cljs.core.rand_int.call(null, 15).toString(16), b.call(null, cljs.core.rest.call(null, d)));
+          }
+          return null;
+        }
+      }, null, null);
+    }.call(null, cljs.core.range.call(null, 6));
+  }());
 };
 sock_singles.simulated.random_parameter = function(a) {
   return cljs.core.rand_nth.call(null, (new cljs.core.Keyword(null, "values", "values", 4485058708)).cljs$core$IFn$_invoke$arity$1(cljs.core.first.call(null, cljs.core.filter.call(null, function(b) {
     return cljs.core._EQ_.call(null, a, (new cljs.core.Keyword(null, "name", "name", 1017277949)).cljs$core$IFn$_invoke$arity$1(b));
   }, sock_singles.parameters.parameters))));
 };
-sock_singles.simulated.random_parameter.call(null, new cljs.core.Keyword(null, "length", "length", 4202507864));
-sock_singles.simulated.random_color.call(null);
 sock_singles.simulated.stock_pictures = new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, ["http://i.imgur.com/K5bDhOb.jpg", "http://i.imgur.com/CW509KC.jpg", "http://i.imgur.com/OFBQvO7.jpg", "http://i.imgur.com/RCedKJi.jpg", "http://i.imgur.com/K0fTAc9.jpg"], null);
 sock_singles.simulated.stock_usernames = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, ["ElChupacabra", "MarcoPolo", "likethemammal", "MrManager"], null);
 sock_singles.simulated.stock_titles = new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, "Fuzzy Wuzzy;Sock it to me it;Linty Linda;Sleepless in Sockeatlle;Socker Star;Sockretes".split(";"), null);

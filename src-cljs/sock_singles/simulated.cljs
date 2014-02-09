@@ -5,11 +5,10 @@
 (enable-console-print!)
 
 (defn random-color []
-  (str
+  (apply  str
    "#"
-   (.toString (rand-int 0xff) 16)
-   (.toString (rand-int 0xff) 16)
-   (.toString (rand-int 0xff) 16)))
+   (for [x (range 6)]
+     (.toString (rand-int 0xf) 16))))
 
 (defn random-parameter [parameter-name]
   (->
@@ -17,10 +16,6 @@
    first
    :values
    rand-nth))
-
-(random-parameter :length)
-
-(random-color)
 
 (def stock-pictures
   ["http://i.imgur.com/K5bDhOb.jpg"
