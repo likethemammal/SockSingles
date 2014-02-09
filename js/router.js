@@ -14,5 +14,11 @@ define(['jsx!views/root'], function(Root){
 		});
 	};
 
+	var routeName = window.location.hash.substring(1);
+
+	root.setState({
+		routeName: routeName
+	});
+
 	return root;
 });
