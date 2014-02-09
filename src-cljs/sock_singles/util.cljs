@@ -11,8 +11,6 @@
           (subs color 2 4)
           (subs color 4 6)])))
 
-(js/parseInt "ff" 16)
-
 (def length-threshold 4)
 (def color-threshold 275)
 
