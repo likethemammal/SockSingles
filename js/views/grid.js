@@ -10,14 +10,14 @@ define(function(){
 	
 	var Grid = React.createClass({
 		
-		getInitalState: function() {
+		getInitialState: function() {
 			return {socks: []};
 		},
 		
 		componentWillMount: function() {
 			SS.getSocks().done(function(socks) {
 				this.setState({socks: socks});				
-			});
+			}.bind(this));
 		},
 		
 		render: function(){
@@ -28,6 +28,8 @@ define(function(){
 			  features,
 			  item,
 			  itemWrapper;
+			  
+			  console.log(this.state);
           
           for (var i = 0; i < this.state.socks.length; i++) {
 			  	styles = {
