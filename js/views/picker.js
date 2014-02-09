@@ -9,7 +9,7 @@ define(function(){
       return React.DOM.input({className:"sliderPicker " + parameter.name + 'Slider filter',
                               type: "range",
                               min:"0",
-                              max: parameter.values.length,
+                              max: parameter.values.length-1,
                               onChange: this.props.onSliderChange})
     },
 
