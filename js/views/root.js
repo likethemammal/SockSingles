@@ -6,7 +6,7 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
 			return {
 				loggedIn:false,
 				pageName: "landing",
-        showTab: true
+        showTab: false
 			}
 		},
 
