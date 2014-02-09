@@ -7,6 +7,7 @@
 body {
   margin: 0;
   background: #fff;
+  font-family: 'Duru Sans', serif;
 }
 
 .hide {
@@ -157,6 +158,7 @@ margin-top: -60px;
 
     li {
       margin-bottom: 5px;
+	  font-size: 15px;
     }
 
     li:last-child {
@@ -178,7 +180,7 @@ width: 320px;
   color: #fff;
   border-radius: 5px;
   margin: 15px;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: bold;
   cursor: pointer;
 
@@ -374,7 +376,22 @@ width: 320px;
     border: none;
     width: 324px;
     height: 84px;
-
+    color: #fff;
+    cursor: pointer;
+    
+  &:before {
+    content: 'Color';
+    position: absolute;
+    top: 10px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 52px;
+    text-align: center;
+    opacity: .4;
+    z-index:  3;
+    color: #fff;
+  }
 }
 
 .lengthSlider {
@@ -413,6 +430,7 @@ width: 320px;
   }
 }
 
+<<<<<<< HEAD
 .popup {
   position:fixed;
   color: #4c3327;
@@ -461,6 +479,112 @@ width: 320px;
 
 .modal .close:hover {
   background-position:0 -12px;
+}
+
+.sideTab {
+  background: rgba(230,230,230,1);
+  box-shadow: @box-shadow;
+  padding: 15px;
+  color: transparent;
+  
+  -webkit-transition: width 200ms linear;
+  
+  .btn-show-tab {
+    display: inline-block;
+	width: 0; 
+	height: 0;
+	margin-bottom: 15px;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent; 
+	
+	border-right:10px solid #999;
+    cursor: pointer;
+  }
+  
+  .btn-hide-tab {
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	
+	border-left: 10px solid #999;
+    cursor: pointer;
+  }
+  
+  .sell-sock {
+	  position: relative;
+	  padding: 15px;
+	  color: #fff;
+	  text-shadow: @text-shadow;
+	  
+	  h2 {
+		  margin-top: 0;
+		  margin-bottom: 15px;
+	  }
+	  
+	  input[type="text"] {
+		  width: 100%;
+		  height: 60px;
+		  padding: 0 15px;
+		  font-size: 25px;
+	  }
+	  
+	  .Upload, .Confirm {
+		  width: 100%;
+		  height: 60px;
+		  cursor: pointer;
+		  font-weight: bold;
+		  font-size: 36px;
+		  border-radius: 5px;
+		  color: #fff;
+		  line-height: 60px;
+		  text-shadow: none;
+		  
+		  -webkit-transition: 100ms linear;
+		  
+		  &:hover {
+		      -webkit-transform: scale(1.1);
+		  }
+
+	  }
+	  
+	  .Upload {
+		  background: #1abc9c;
+	  }
+	  
+	  .Confirm {
+		  background: #34495e;
+	  }
+	  
+	  * {
+		  margin-bottom: 15px;
+	  }
+	  
+	  input[type="range"] {
+		width: 245px;
+		left: -3px;
+	}
+  }
+  
+  .filter:before {
+	  opacity: .2;
+	  color: #444;
+	  font-weight: bold;
+
+	  z-index: 1;
+  }
+  
+  .filter {
+	  position: relative;
+		top: 0;
+		left: -14px;
+		width: 264px;
+  }
+  
+  .colorSlider:before {
+	  opacity: .4;
+	  color: #fff;
+  }
 }
 
 @media only screen and (max-width: 960px) {

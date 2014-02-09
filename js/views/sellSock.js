@@ -53,7 +53,7 @@ define(["views/picker"],function(Picker){
     },
 
     render: function(){
-      var uploadButton = React.DOM.button({onClick:this.uploadPic},"Upload Your Sock");
+      var uploadButton = React.DOM.div({className: 'Upload', onClick:this.uploadPic},"Upload");
 
       var uploadPreview = React.DOM.div({className: "pic-preview"});
       if (this.state.uploadedPic !== ""){
@@ -86,7 +86,7 @@ define(["views/picker"],function(Picker){
         uploadPreview,
         components,
         titleInput,
-        React.DOM.button({onClick:this.uploadSock},"Put your sock out there!"),
+        React.DOM.div({className: 'Confirm'}, {onClick:this.uploadSock},"Confirm"),
         successMessage
       );
     }

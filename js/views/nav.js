@@ -22,13 +22,6 @@ define(function(){
 				}
             }, 'Sell'));
                         
-            navItems.push(React.DOM.div({
-                className: 'nav-item nav-about',
-				onClick: function() {
-					window.location.hash = '#about';
-				}
-            }, 'About'));
-                        
             nav = React.DOM.div({
                 className: 'nav'
             }, navItems)

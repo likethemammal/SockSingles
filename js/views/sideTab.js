@@ -5,12 +5,7 @@ define(["views/sellSock"], function(SellSock){
         return React.DOM.div();
       }else{
         var tabs = {
-          "sell" : SellSock(),
-          "default": React.DOM.div(
-            {},
-            React.DOM.button({onClick:this.changeToSellTab}, "Sell"),
-            React.DOM.h2(null,"Hey, I'm a side tab")
-          )
+          "default": SellSock()
         };
 
         return tabs[tabName] || tabs.default;
@@ -39,8 +34,8 @@ define(["views/sellSock"], function(SellSock){
 
 		render: function(){
 
-      var showBtn = React.DOM.button({onClick:this.props.onTabShow},"Show Tab");
-      var hideBtn = React.DOM.button({onClick:this.props.onTabHide},"Hide Tab");
+      var showBtn = React.DOM.div({className: 'btn-show-tab', onClick:this.props.onTabShow});
+      var hideBtn = React.DOM.div({className: 'btn-hide-tab', onClick:this.props.onTabHide});
       var btn = this.props.showTab ? hideBtn : showBtn;
 
       var tabWidth = this.props.showTab ? "300px" : "50px";
@@ -49,7 +44,6 @@ define(["views/sellSock"], function(SellSock){
         React.DOM.div(
           {className:"sideTab", style:{
             position: "fixed",
-            background: "whitesmoke",
             height: "100%",
             top: "0px",
             right: "0px",
