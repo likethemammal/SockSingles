@@ -14159,7 +14159,7 @@ sock_singles.util.split_color = function(a) {
     return parseInt(a, 16);
   }, new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.subs.call(null, a, 0, 2), cljs.core.subs.call(null, a, 2, 4), cljs.core.subs.call(null, a, 4, 6)], null));
 };
-sock_singles.util.color_threshold = 275;
+sock_singles.util.color_threshold = 150;
 sock_singles.util.color_distance = function(a, b) {
   var c = sock_singles.util.split_color.call(null, a), d = sock_singles.util.split_color.call(null, b);
   return Math.sqrt(cljs.core.apply.call(null, cljs.core._PLUS_, cljs.core.map.call(null, cljs.core.comp.call(null, function(a) {

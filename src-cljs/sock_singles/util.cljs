@@ -12,7 +12,7 @@
           (subs color 2 4)
           (subs color 4 6)])))
 
-(def color-threshold 275)
+(def color-threshold 150)
 
 (defn color-distance [color1 color2]
   (let [colors1 (split-color color1)

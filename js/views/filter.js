@@ -25,9 +25,22 @@ define(function(){
 
     },
 
+    onColorChange: function(e){
+      var color = e.target.value,
+          parameter = this.props.parameter,
+          socks = this.props.socks;
+
+      var filteredSocks = socks.filter(function(sock){
+        return sock_singles.core.colorFilter(sock["color"],color);
+      })
+
+      this.props.onFiltered("color", filteredSocks)
+    },
+
     colorPicker: function(parameter){
       return React.DOM.input({className:"colorPicker",
-                              type: "color"})
+                              type: "color",
+                              onChange: this.onColorChange})
     },
     sliderPicker: function(parameter){
       return React.DOM.input({className:"sliderPicker",
