@@ -1,4 +1,4 @@
-define(function(){
+define(["views/filter"],function(Filter){
 	var SS = sock_singles.core;
 
 	var Grid = React.createClass({
@@ -16,52 +16,54 @@ define(function(){
 		render: function(){
           var grid,
               gridItems = [],
-			  styles,
-			  caption,
-			  features,
-			  item,
-			  itemWrapper,
-			  wrapperClasses;
-			  
-			  console.log(this.state);
+              styles,
+              caption,
+              features,
+              item,
+              itemWrapper,
+              wrapperClasses;
 
-          for (var i = 0; i < this.state.socks.length; i++) {
-			  	styles = {
-					'background-image': ['url(', this.state.socks[i]['image-path'], ')'].join('')
-				}
+      console.log(this.state);
 
-				colorDiv = React.DOM.div({className: 'color-box', style: {background: this.state.socks[i].color}})
-				colorFeature = React.DOM.div({ className: 'color feature'}, colorDiv);
-				lengthFeature = React.DOM.div({ className: 'length feature' }, this.state.socks[i].length + '"');
-				sizeFeature = React.DOM.div({ className: 'size feature' }, this.state.socks[i].size);
+      for (var i = 0; i < this.state.socks.length; i++) {
+        styles = {
+          'background-image': ['url(', this.state.socks[i]['image-path'], ')'].join('')
+        }
 
-				features = React.DOM.div({ className: 'features' }, [colorFeature, lengthFeature, sizeFeature]);
-				caption = React.DOM.div({ className: 'caption' }, this.state.socks[i]['title']);
+        colorDiv = React.DOM.div({className: 'color-box', style: {background: this.state.socks[i].color}})
+        colorFeature = React.DOM.div({ className: 'color feature'}, colorDiv);
+        lengthFeature = React.DOM.div({ className: 'length feature' }, this.state.socks[i].length + '"');
+        sizeFeature = React.DOM.div({ className: 'size feature' }, this.state.socks[i].size);
 
-                item = React.DOM.div({ className: 'item', style: styles}, [caption, features]);
-				
-			  	wrapperClasses = 'item-wrapper';
+        features = React.DOM.div({ className: 'features' }, [colorFeature, lengthFeature, sizeFeature]);
+        caption = React.DOM.div({ className: 'caption' }, this.state.socks[i]['title']);
 
-				if (i === 3 || (i - 3) % 6 === 0) {
-					wrapperClasses += ' column2';
+        item = React.DOM.div({ className: 'item', style: styles}, [caption, features]);
+
+        wrapperClasses = 'item-wrapper';
+
+        if (i === 3 || (i - 3) % 6 === 0) {
+          wrapperClasses += ' column2';
 				} else {
 					wrapperClasses += ' column1';
 				}
-                
-				itemWrapper = React.DOM.div({ className: wrapperClasses }, item);
-                
-                gridItems.push(itemWrapper);
-          }
 
-          grid = React.DOM.div({
-            className: 'grid',
-          }, gridItems);
+        itemWrapper = React.DOM.div({ className: wrapperClasses }, item);
 
-          console.log(this.state.socks);
+        gridItems.push(itemWrapper);
+      }
 
-          return grid;
-        }
-	});
+      grid = React.DOM.div(
+        {className: 'grid'},
+        Filter(),
 
-	return Grid;
+        gridItems);
+
+      console.log(this.state.socks);
+
+      return grid;
+    }
+  });
+
+  return Grid;
 });

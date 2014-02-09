@@ -1,4 +1,4 @@
-define(['js/views/grid.js'], function(Grid){
+define(['views/grid'], function(Grid){
   return React.createClass({
     render:function(){
       return Grid();

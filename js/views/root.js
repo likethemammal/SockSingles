@@ -1,6 +1,6 @@
 /** @jsx React.DOM */
-define(['jsx!routes', 'views/landing', 'views/search', 'jsx!views/twoBigButtons'],
-        function(routes, LandingPage, Search, TwoBigButtons){
+define(['views/landing', 'views/search', 'jsx!views/twoBigButtons'],
+        function(LandingPage, Search, TwoBigButtons){
 	var Root = React.createClass({
 		getInitialState: function(){
 			return {
