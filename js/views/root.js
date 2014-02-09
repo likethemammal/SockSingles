@@ -15,19 +15,19 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons'],
 			});
 		},
 
-		page: function(pageName){
-		  var pages = {
-			"landing": LandingPage({router: this.state.router}),
-			"search": Search({}),
-			"404": React.DOM.div({className:"404"},React.DOM.h2(null, "404, brah"))
-		  };
-	
-		  if (pages[pageName] === undefined){
-			return pages["404"];
-		  }else{
-			return pages[pageName];
-		  }
-		},
+    page: function(pageName){
+      var pages = {
+        "landing": LandingPage({router: this.state.router}),
+        "search": Search({}),
+        "404": React.DOM.div({className:"404"},React.DOM.h2(null, "404, brah"))
+      };
+
+      if (pages[pageName] === undefined){
+        return pages["404"];
+      }else{
+        return pages[pageName];
+      }
+    },
 
 		render: function(){
       return React.DOM.div(
