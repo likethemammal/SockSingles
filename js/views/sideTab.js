@@ -33,6 +33,10 @@ define(["views/sellSock"], function(SellSock){
       this.setState({tabName:"sell"});
     },
 
+    componentWillMount: function(){
+      this.checkLoggedInStatus()
+    },
+
 		render: function(){
 
       var showBtn = React.DOM.button({onClick:this.props.onTabShow},"Show Tab");
