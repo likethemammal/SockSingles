@@ -15,6 +15,13 @@ define(['jsx!views/root'], function(Root){
         console.log("Going to search Page")
         root.setState({pageName:"search"})
       },
+      "single/:id":function(id){
+        console.log("Going to single Page")
+        root.setState({
+			pageName:"single",
+			id: id
+		})
+      },
       "":function(){
         root.setState({pageName:"landing"})
       },

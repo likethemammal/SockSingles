@@ -45,7 +45,6 @@ define(['views/grid', "views/filter"], function(Grid, Filter){
           React.DOM.div({className:"filters"}, filterComponents),
           Grid({socks:socks}))
       );
-
     }
   })
 })

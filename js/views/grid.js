@@ -11,12 +11,13 @@ define(["views/filter"],function(Filter){
               item,
               itemWrapper,
               wrapperClasses,
-              socks = this.props.socks;
+              socks = this.props.socks,
+			  sock;
 
       for (var i = 0; i < socks.length; i++) {
         styles = {
-// 					'background-image': ['url(', socks[i]['image-path'], ')'].join('')
-					'background-image': ['url(/../imgs/sock', Math.ceil(Math.random()*3), 'clear.jpg)'].join('')
+// 			'background-image': ['url(', socks[i]['image-path'], ')'].join('');
+			'background-image': ['url(/../imgs/sock', Math.ceil(Math.random()*3), 'clear.jpg)'].join('')
         }
 
         colorDiv = React.DOM.div({className: 'color-box', style: {background: socks[i].color}})
@@ -29,15 +30,23 @@ define(["views/filter"],function(Filter){
 
         item = React.DOM.div({ className: 'item', style: styles}, [caption, features]);
 
-        wrapperClasses = 'item-wrapper';
+		wrapperClasses = 'item-wrapper';
 
-        if (i === 3 || (i - 3) % 6 === 0) {
-          wrapperClasses += ' column2';
-				} else {
-					wrapperClasses += ' column1';
-				}
+		if (i === 3 || (i - 3) % 6 === 0) {
+		  wrapperClasses += ' column2';
+		} else {
+	      wrapperClasses += ' column1';
+		}
 
-        itemWrapper = React.DOM.div({ className: wrapperClasses }, item);
+		sock = socks[i];
+
+		itemWrapper = React.DOM.div({
+			className: wrapperClasses,
+			onClick: function() {
+				console.warn(this)
+				window.location.hash = 'single/' + sock.id
+			}.bind(this)
+		}, item);
 
         gridItems.push(itemWrapper);
       }
