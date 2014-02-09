@@ -1,9 +1,34 @@
-define(function(){
+define(["views/sellSock"], function(SellSock){
 	var SideTab = React.createClass({
+    tabViews: function(tabName){
+      if (!this.props.showTab){
+        return React.DOM.div();
+      }else{
+        var tabs = {
+          "sell" : SellSock(),
+          "default": React.DOM.div(
+            {},
+            React.DOM.button({onClick:this.changeToSellTab}, "Sell"),
+            React.DOM.h2(null,"Hey, I'm a side tab")
+          )
+        };
+
+        return tabs[tabName] || tabs.default;
+      }
+    },
+
+    getInitialState: function(){
+      return {tabName:"default"};
+    },
+
+    changeToSellTab: function(){
+      this.setState({tabName:"sell"});
+    },
+
 		render: function(){
+
       var showBtn = React.DOM.button({onClick:this.props.onTabShow},"Show Tab");
       var hideBtn = React.DOM.button({onClick:this.props.onTabHide},"Hide Tab");
-
       var btn = this.props.showTab ? hideBtn : showBtn;
 
       var tabWidth = this.props.showTab ? "300px" : "50px";
@@ -18,8 +43,8 @@ define(function(){
             right: "0px",
             width:tabWidth
           }},
-          React.DOM.h2(null, "Hey there, I'm a side tab"),
-          btn
+          btn,
+          this.tabViews(this.state.tabName)
           )
 			);
 		}
