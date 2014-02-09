@@ -6,8 +6,17 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
 			return {
 				loggedIn:false,
 				pageName: "landing",
+        showTab: true
 			}
 		},
+
+    onTabShow: function(){
+      this.setState({showTab: true})
+    },
+
+    onTabHide: function(){
+      this.setState({showTab: false})
+    },
 
 		onLogin: function(){
 			this.setState({
@@ -19,7 +28,7 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
       var pages = {
         "landing": LandingPage({router: this.state.router}),
         "search": Search({}),
-		"single": Single({}),
+        "single": Single({}),
         "404": React.DOM.div({className:"404"},React.DOM.h2(null, "404, brah"))
       };
 
@@ -31,11 +40,14 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
     },
 
 		render: function(){
-      return React.DOM.div({},
-        		React.DOM.div({},
-				this.page(this.state.pageName)),
-        		SideTab()
-      		)
+
+      return React.DOM.div(
+        {},
+        React.DOM.div({}, this.page(this.state.pageName)),
+        SideTab({showTab:this.state.showTab,
+                 onTabShow: this.onTabShow,
+                 onTabHide: this.onTabHide})
+      )
 		}
 	});
 
