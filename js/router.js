@@ -13,7 +13,7 @@ define(['jsx!views/root'], function(Root){
 			routeName: routeName
 		});
 	};
-
+	
 	var routeName = window.location.hash.substring(1);
 
 	root.setState({

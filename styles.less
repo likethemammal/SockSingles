@@ -25,6 +25,7 @@ body {
 
 .item-wrapper {
   width: @grid-width/@num-columns;
+  height: @grid-width/@num-columns;
   padding: 15px;
   float: left;
 }
@@ -35,15 +36,21 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #D26;
-  border-color: hsla(0, 0%, 0%, 0.5);
+  background: #fff;
+  border-color: hsla(0, 0, 0%, 0.5);
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
+  
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 1);
     
   &:hover {
     .caption {
       bottom: @caption-height*-1;
+    }
+    .features {
+      top: @caption-height*-1;
     }
   }
   
@@ -52,11 +59,49 @@ body {
     width: 100%;
     height: @caption-height;
     bottom: 0;
-    background: lightgray;
+    padding: 18px;
+    background: rgba(255,255,255,0.1);
     border-radius: 0 0 5px 5px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
     
     -webkit-transition: bottom 200ms ease-in-out;
     transition: bottom 200ms ease-in-out;
+  }
+  
+  .features {
+    position: absolute;
+    width: 100%;
+    height: @caption-height;
+    top: 0;
+    padding: 18px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    
+    -webkit-transition: top 200ms ease-in-out;
+    transition: top 200ms ease-in-out;
+
+  }
+  
+  .feature {
+    display: inline-block;
+    width: 33%;
+  }
+  
+  .color-box {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    top: 4px;
+    border: 1px solid #000;
+    text-align: center;
+    
+    box-shadow: 0 0 2px rgba(0, 0, 0, 1);
   }
 }
 
@@ -103,13 +148,6 @@ body {
   font-weight: bold;
   font-size: 70px;
   outline: none; 
-  
-  -webkit-transition: line-height 200ms linear, height 200ms linear;
-}
-
-.btn-with-input {
-  height: auto;
-  line-height: initial;
 }
 
 .btn-green {
@@ -126,47 +164,35 @@ body {
   }
 }
 
-.btn-green-blue {
-  background: #1abc9c;
-  &:hover {
-    background: #16a085;
-  }
-}
-
-.btn-dark-blue {
-  background: #34495e;
-  &:hover {
-    background: #2c3e50;
-  }
-}
-
-
-.input-field {
-  display: inline-block;
-  width: 670px;
-}
-
-
 
 .container-fluid {
-  
-  width: 100%;
-  height: 100%;
   text-align: center;
+}
+
+#background {
+  z-index: -1;
+  
+  position: fixed;
+  width: 110%;
+  height: 110%;
+  
   -webkit-transition: background 2s linear;
 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
   
+  background-position: top center;
+  background-color: #000;
+  background-attachment:fixed;
+  
+  -webkit-filter: blur(5px);
+
   &.landing {
-    background: url('http://i.imgur.com/OFBQvO7.jpg') top center no-repeat fixed #1e232a;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
+    background-image: url('http://i.imgur.com/OFBQvO7.jpg');
   }
   
   &.login-signup {
-    background: url('http://i.imgur.com/RCedKJi.jpg') top center no-repeat fixed #1e232a;;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
+    background-image: url('http://i.imgur.com/RCedKJi.jpg');
   }
 }
