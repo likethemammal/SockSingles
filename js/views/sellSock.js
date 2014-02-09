@@ -86,7 +86,7 @@ define(["views/picker"],function(Picker){
         uploadPreview,
         components,
         titleInput,
-        React.DOM.div({className: 'Confirm'}, {onClick:this.uploadSock},"Confirm"),
+        React.DOM.div({className: 'Confirm', onClick:this.uploadSock},"Confirm"),
         successMessage
       );
     }
