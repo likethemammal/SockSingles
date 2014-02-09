@@ -20,14 +20,14 @@ define(function(){
 			  caption,
 			  features,
 			  item,
-			  itemWrapper;
-
+			  itemWrapper,
+			  wrapperClasses;
+			  
 			  console.log(this.state);
 
           for (var i = 0; i < this.state.socks.length; i++) {
 			  	styles = {
-					'background-image': ['url(', this.state.socks[i]['image-path'], ')'].join(''),
-					'background-size': 'auto 320px'
+					'background-image': ['url(', this.state.socks[i]['image-path'], ')'].join('')
 				}
 
 				colorDiv = React.DOM.div({className: 'color-box', style: {background: this.state.socks[i].color}})
@@ -39,8 +39,17 @@ define(function(){
 				caption = React.DOM.div({ className: 'caption' }, this.state.socks[i]['title']);
 
                 item = React.DOM.div({ className: 'item', style: styles}, [caption, features]);
-                itemWrapper = React.DOM.div({ className: 'item-wrapper' }, item);
+				
+			  	wrapperClasses = 'item-wrapper';
 
+				if (i === 3 || (i - 3) % 6 === 0) {
+					wrapperClasses += ' column2';
+				} else {
+					wrapperClasses += ' column1';
+				}
+                
+				itemWrapper = React.DOM.div({ className: wrapperClasses }, item);
+                
                 gridItems.push(itemWrapper);
           }
 

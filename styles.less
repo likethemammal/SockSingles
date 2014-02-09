@@ -15,8 +15,10 @@ body {
 @grid-width: 960px;
 @num-columns: 3;
 
-#container {
+.container-fluid {
   max-width: @grid-width;
+  margin: 0 auto;
+  padding-top: 45px;
 }
 
 .grid-sizer {
@@ -105,21 +107,21 @@ body {
   }
 }
 
-.column {
-  
+.column1 {
     width: @grid-width/@num-columns;
     height: @grid-width/@num-columns;
-    .item {
-        background-size: auto 100%;
-    }
 
+    .item {
+        background-size: auto 320px;
+    }
 }
 
 .column2 {
-    width: @grid-width*2/@num-columns;
-    height: @grid-width*2/@num-columns;
+      width: @grid-width*2/@num-columns;
+      height: @grid-width*2/@num-columns;
+
     .item {
-        background-size: auto 100%;
+        background-size: auto 640px;
     }
 }
 
@@ -165,9 +167,6 @@ body {
 }
 
 
-.container-fluid {
-  text-align: center;
-}
 
 #background {
   z-index: -1;
@@ -196,3 +195,13 @@ body {
     background-image: url('http://i.imgur.com/RCedKJi.jpg');
   }
 }
+
+@media only screen and (max-width: 960px) {
+.column2 {
+      width: @grid-width/@num-columns;
+      height: @grid-width/@num-columns;
+
+    .item {
+        background-size: auto @grid-width/@num-columns;
+    }
+}}
