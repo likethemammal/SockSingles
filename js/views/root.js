@@ -1,10 +1,11 @@
 /** @jsx React.DOM */
-define(['jsx!routes', 'jsx!views/twoBigButtons'], function(routes, TwoBigButtons){
+define(['jsx!routes', 'views/landing', 'views/search', 'jsx!views/twoBigButtons'],
+        function(routes, LandingPage, Search, TwoBigButtons){
 	var Root = React.createClass({
 		getInitialState: function(){
 			return {
 				loggedIn:false,
-				routeName: "",
+				pageName: "landing",
 			}
 		},
 
@@ -14,23 +15,25 @@ define(['jsx!routes', 'jsx!views/twoBigButtons'], function(routes, TwoBigButtons
 			});
 		},
 
+    page: function(pageName){
+      var pages = {
+        "landing": LandingPage({router: this.state.router}),
+        "search": Search({}),
+        "404": React.DOM.div({className:"404"},React.DOM.h2(null, "404, brah"))
+      };
+
+      if (pages[pageName] === undefined){
+        return pages["404"];
+      }else{
+        return pages[pageName];
+      }
+    },
+
 		render: function(){
-			var response;
-			/* once we have login working
-			if (!this.state.loggedIn){
-				response = (
-					<div>
-						<TwoBigButtons />
-					</div>
-				);
-			} else { */
-				response = (
-					<div>
-						{routes(this.state.routeName)}
-					</div>
-				);
-			//}
-			return response;
+      return React.DOM.div(
+        {},
+        this.page(this.state.pageName)
+      )
 		}
 	});
 
