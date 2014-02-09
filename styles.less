@@ -374,14 +374,44 @@ width: 320px;
     border: none;
     width: 324px;
     height: 84px;
+    
 }
 
 .lengthSlider {
   position: relative;
   left: -12px;
   width: 289px;
+  
+  
+      &:before {
+        content: 'Length';
+        position: absolute;
+        top: -7px;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        font-size: 52px;
+        text-align: center;
+        opacity: .4;
+        z-index: -1;
+    }
 }
 
+.sizeSlider {
+  position: relative;
+  &:before {
+    content: 'Size';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 52px;
+    text-align: center;
+    opacity: .4;
+    z-index: -1;
+  }
+}
 
 
 
