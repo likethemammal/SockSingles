@@ -9,10 +9,16 @@ define(function(){
 	
 	var Item = React.createClass({
 		render: function(){
-			var caption,
+			var header,
+				caption,
 				item,
 				itemChildren = [],
 				itemWrapper;
+				
+			if (this.props.header) {
+				header = React.DOM.div({className: 'header'}, this.props.header);
+				itemChildren.push(header);
+			}
 				
 			caption = React.DOM.div({ className: 'caption' }, this.props.title);
 			itemChildren.push(caption);
@@ -29,9 +35,9 @@ define(function(){
 			
 			item = React.DOM.div({ className: 'item', style: {
 				background: 'url(' + this.props['image-path'] + ') top center'}
-			}, [caption]);
+			}, itemChildren);
 	
-			itemWrapper = React.DOM.div({ className: 'item-wrapper' + this.props.wrapperClass }, item);
+			itemWrapper = React.DOM.div({ className: 'item-wrapper ' + this.props.wrapperClass }, item);
 	
 		  return itemWrapper;
 		}
@@ -39,29 +45,48 @@ define(function(){
 	
 	var User = React.createClass({
 		render: function(){	
+		
+		var item,
+			header;
+					
 			item = Item({
 				title: this.props.displayName,
-				'image-path': this.props['image-path']
-			});
+				'image-path': this.props['image-path'],
+				header: 'Seller',
+			}, header);
 		    return item;
 		}
 	});
 	
 	var Desc = React.createClass({
 		render: function(){
-			var SS = sock_singles.core,
-				user = SS.getLoggedInUser(),
-				trait,
+			var trait,
 				traits = [],
-				desc;
+				header,
+				desc,
+				notTraits = ['id', 'displayName', 'image-path', 'username', '__owner__'],
+				propVal, 
+				propKey;
 				
-			for (var i = 0; i < this.props.traits; i++) {
-				trait = React.DOM.li({ className: 'trait' }, this.props.traits[i].key + ': ' + this.props.traits[i]);
+				console.log(this.props);
+				
+			for (var i = 0; i < Object.keys(this.props).length; i++) {
+				
+				propKey = Object.keys(this.props)[i];
+				propVal = this.props[propKey];
+								
+				if (_.indexOf(notTraits, propKey) === -1) {
+				
+					trait = React.DOM.li({ className: 'trait' }, propKey + ': ' + propVal);
+					traits.push(trait);
+				}
 			}
-	
-			desc = React.DOM.ul({ className: 'trait-list' }, trait);
 			
-			descWrapper = React.DOM.div({ className: 'desc' }, desc);
+			header = React.DOM.div( {className: 'header'}, 'Description');
+	
+			desc = React.DOM.ul({ className: 'trait-list' }, traits);
+			
+			descWrapper = React.DOM.div({ className: 'desc' }, [header, desc]);
 	
 		  return descWrapper;
 		}
@@ -106,25 +131,22 @@ define(function(){
 				columnSidebar,
 				columnMain;
 				
-				user = User($.extend({wrapperClass: 'column1'}, this.state));				
+				user = User($.extend({wrapperClass: 'column1 user'}, this.state));				
 				desc = Desc($.extend(new fakeTraits, this.state));
-				
-				columnSidebar = React.DOM.div({className: 'column-sidebar'}, [user, columnSidebar]);
-				
-				item = Item($.extend({wrapperClass: 'column2'}, this.state));				
 				buyButton = React.DOM.div({
-					wrapperClass: 'buy-button',
+					className: 'buy-button',
 					onClick: function() {
 						console.log('sock bought');
 					}
-				});
+				}, 'Buy this sock!');
 				
-				columnMain = React.DOM.div({
-					className: 'column-main'
-				}, [item, buyButton]);
+				columnSidebar = React.DOM.div({className: 'column-sidebar'}, [user, buyButton, desc]);
 				
-				page = React.DOM.div({}, [columnMain, columnSidebar])
-			  				  	
+				item = Item($.extend({wrapperClass: 'column2'}, this.state));				
+				
+				columnMain = React.DOM.div({className: 'column-main'}, item);
+				
+				page = React.DOM.div({}, [columnMain, columnSidebar]);
 			  	return page;
         }
 	});
