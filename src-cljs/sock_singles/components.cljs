@@ -8,5 +8,4 @@
   (reify
     om/IRender
     (render [this]
-      (def j this)
       (dom/h1 nil (:text data)))))

@@ -17098,26 +17098,25 @@ om.core.graft = function(a, b) {
 };
 sock_singles.components = {};
 sock_singles.components.widget = function widget(b, c) {
-  "undefined" === typeof sock_singles.components.t6830 && (sock_singles.components.t6830 = function(b, c, f, g) {
+  "undefined" === typeof sock_singles.components.t6848 && (sock_singles.components.t6848 = function(b, c, f, g) {
     this.owner = b;
     this.data = c;
     this.widget = f;
-    this.meta6831 = g;
+    this.meta6849 = g;
     this.cljs$lang$protocol_mask$partition1$ = 0;
     this.cljs$lang$protocol_mask$partition0$ = 393216;
-  }, sock_singles.components.t6830.cljs$lang$type = !0, sock_singles.components.t6830.cljs$lang$ctorStr = "sock-singles.components/t6830", sock_singles.components.t6830.cljs$lang$ctorPrWriter = function(b, c, f) {
-    return cljs.core._write.call(null, c, "sock-singles.components/t6830");
-  }, sock_singles.components.t6830.prototype.om$core$IRender$ = !0, sock_singles.components.t6830.prototype.om$core$IRender$render$arity$1 = function(b) {
-    sock_singles.components.j = this;
+  }, sock_singles.components.t6848.cljs$lang$type = !0, sock_singles.components.t6848.cljs$lang$ctorStr = "sock-singles.components/t6848", sock_singles.components.t6848.cljs$lang$ctorPrWriter = function(b, c, f) {
+    return cljs.core._write.call(null, c, "sock-singles.components/t6848");
+  }, sock_singles.components.t6848.prototype.om$core$IRender$ = !0, sock_singles.components.t6848.prototype.om$core$IRender$render$arity$1 = function(b) {
     return React.DOM.h1(null, (new cljs.core.Keyword(null, "text", "text", 1017460895)).cljs$core$IFn$_invoke$arity$1(this.data));
-  }, sock_singles.components.t6830.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
-    return this.meta6831;
-  }, sock_singles.components.t6830.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
-    return new sock_singles.components.t6830(this.owner, this.data, this.widget, c);
-  }, sock_singles.components.__GT_t6830 = function(b, c, f, g) {
-    return new sock_singles.components.t6830(b, c, f, g);
+  }, sock_singles.components.t6848.prototype.cljs$core$IMeta$_meta$arity$1 = function(b) {
+    return this.meta6849;
+  }, sock_singles.components.t6848.prototype.cljs$core$IWithMeta$_with_meta$arity$2 = function(b, c) {
+    return new sock_singles.components.t6848(this.owner, this.data, this.widget, c);
+  }, sock_singles.components.__GT_t6848 = function(b, c, f, g) {
+    return new sock_singles.components.t6848(b, c, f, g);
   });
-  return new sock_singles.components.t6830(c, b, widget, null);
+  return new sock_singles.components.t6848(c, b, widget, null);
 };
 sock_singles.service = {};
 cljs.core.enable_console_print_BANG_.call(null);
