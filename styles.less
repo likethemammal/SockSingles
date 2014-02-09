@@ -199,7 +199,7 @@ width: 320px;
     height: @grid-width/@num-columns;
 
     .item {
-        background-size: auto 320px;
+        background-size: cover;
     }
 }
 
@@ -208,9 +208,10 @@ width: 320px;
       height: @grid-width*2/@num-columns;
 
     .item {
-        background-size: auto 640px;
-    }
+        background-size: cover;
+  }
 }
+
 
 .column-main {
   width: 640px;
@@ -592,7 +593,8 @@ width: 320px;
         height: @grid-width/@num-columns;
 
       .item {
-          background-size: auto @grid-width/@num-columns;
+          /* background-size: auto @grid-width/@num-columns; */
+          background-size: cover;
       }
   }
 
@@ -601,7 +603,11 @@ width: 320px;
         height: @grid-width*2/@num-columns;
 
       .item {
-          background-size: auto @grid-width*2/@num-columns;
+          /* background-size: auto @grid-width*2/@num-columns; */
       }
   }
+}
+
+
+.item{
 }
