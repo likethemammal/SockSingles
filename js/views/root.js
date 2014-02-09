@@ -26,7 +26,7 @@ define(['views/landing', 'views/search', 'jsx!views/twoBigButtons', 'views/singl
 
     page: function(pageName){
       var pages = {
-        "landing": LandingPage({router: this.state.router}),
+        "landing": LandingPage({router: this.state.router, onSellClick:this.onTabShow}),
         "search": Search({}),
         "single": Single({}),
         "404": React.DOM.div({className:"404"},React.DOM.h2(null, "404, brah"))

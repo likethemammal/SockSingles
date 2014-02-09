@@ -18,7 +18,7 @@ define(["views/sellSock"], function(SellSock){
     },
 
     getInitialState: function(){
-      return {tabName:"default"};
+      return {tabName:"sell"};
     },
 
     checkLoggedInStatus: function(){

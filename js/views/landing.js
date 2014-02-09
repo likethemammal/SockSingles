@@ -14,6 +14,8 @@ define(['jsx!views/twoBigButtons'], function(TwoBigButtons){
           router.navigate("search",{trigger:true})
         }.bind(this));
       }
+
+      this.props.onSellClick();
     },
     render:function(){
       return  TwoBigButtons(
