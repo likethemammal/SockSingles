@@ -1,20 +1,18 @@
-define(['jsx!routes'], function(routes){
-
+/** @jsx React.DOM */
+define(['jsx!views/root'], function(Root){
 	var mainElement = $("[data-js-app]")[0];
 
-	var routerProperties = {};
-	_.each(routes, function(value, key, list){
-		routerProperties[key] = function(){
-			React.renderComponent(
-				value,
-				mainElement
-			);
-		};
-	});
+	var root = React.renderComponent(
+		<Root />,
+		mainElement
+	);
 
-	var router = new (Backbone.Router.extend({
-		routes: routerProperties
-	}));
+	window.onhashchange = function(page){
+		var routeName = page.target.location.hash.substring(1);
+		root.setState({
+			routeName: routeName
+		});
+	};
 
-	return router;
+	return root;
 });
